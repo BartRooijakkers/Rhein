@@ -1,0 +1,25 @@
+html{
+    background-color: #FFF2CC;
+}
+
+form label{
+    display: block;
+    font-weight: bold;
+}
+form input{
+    display: block;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+form button{
+    margin-top:5%;
+    background-color: rgba(0, 128, 0, 0.664);
+    color:white;
+    cursor: pointer;
+}
+.login{
+    display: block;
+    position: absolute;
+    left:2%;
+    top:5%;
+}
