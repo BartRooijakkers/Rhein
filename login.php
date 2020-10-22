@@ -20,9 +20,15 @@ $result = mysqli_query($conn,$sql);
 
 if(mysqli_num_rows($result) > 0){
     while($row = mysqli_fetch_assoc($result)){
-     echo "Welkom <b><i>" .$row['voor_naam']." " .$row['achter_naam'] . "</i></b>!";
+        session_start();
+        $_SESSION['userID'] = $row['gebruiker_ID'];
+        $_SESSION['user'] = $username;
+        $_SESSION['naam'] = $row['voor_naam'];
+        $_SESSION['achternaam'] = $row['achter_naam'];
+        $_SESSION['afdeling'] = $row['afdeling'];
+        header('Location:home.php'); 
      }
 }else{
-    echo "Gebruikersnaam / wachtwoord onjuist " . mysqli_error($conn);
+    header('Location:index.php?status=1'); 
 }
 ?>

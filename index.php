@@ -1,3 +1,10 @@
+<?php
+if($_GET['status'] = 1){
+    echo "Gebruikersnaam / wachtwoord onjuist ";
+}
+
+?>
+
 <html>
 <head>
 <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
