@@ -1,7 +1,8 @@
 html{
     background-color: #FFF2CC;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+/* Inlog formulier*/
 form label{
     display: block;
     font-weight: bold;
@@ -23,3 +24,93 @@ form button{
     left:2%;
     top:5%;
 }
+/* Logo */
+#logo {
+    width: auto;
+    min-height: 5%;
+    height: auto;
+    background: url(../images/Logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+/* Home page test keuze */
+.option{
+    width:45%;
+    height:35%;
+    cursor: pointer;
+    display: inline-block;
+    margin-right:3%;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+.option:hover{
+    border: 2px solid white;
+}
+.choices{
+    width:45%;
+    margin-left: 475.605px;
+}
+
+#kabeltest{
+    background: url(../images/kabeltest.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#kabeltest:hover {
+    background: url(../images/kabeltestActief.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#hijstest {
+    background:url(../images/hijstest.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#hijstest:hover{
+    background: url(../images/hijstestActief.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+/* Content sizing & verdeling */
+.contentBox{
+    width:100%;
+    min-height:10%;
+    height:auto;
+    display: block;
+}
+ .contentBox .contentTile {
+     position: relative;
+     height:auto;
+     width:33%;
+     display: inline-block;
+ }
+ .contentBox .contentTile .pageTitle{
+     text-align: center;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
+
+ /* Navigatie */
+ #nav .route{
+     color:black;
+     background-color: azure;
+     text-decoration: none;
+     border: 1px solid black;
+     padding:1%;
+     margin-right:0.1%;
+ }
+ #nav .route:hover{
+     color:black;
+     background-color: rgb(171, 243, 219);
+ }
+
+ /* Overzichten */
+ table{
+     display: table;
+     border:1px solid black;
+ }
+ table th{
+    border: 1px solid black;
+ }
+ table td {
+     border: 1px solid black;
+ }

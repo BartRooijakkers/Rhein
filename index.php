@@ -1,8 +1,20 @@
 <?php
-if($_GET['status'] = 1){
-    echo "Gebruikersnaam / wachtwoord onjuist ";
+session_start();
+if(!isset($_SESSION['userID'])){
+switch (@$_GET['status']) {
+    case 1:
+        echo "u bent uitgelogd.";
+        break;
+    case 2:
+        echo "Onjuist gebruikersnaam en/of wachtwoord.";
+        break;
+    default:
+        echo "U bent niet ingelogd.";
+        break;
 }
-
+}else{
+    header('Location:home.php'); 
+}
 ?>
 
 <html>
@@ -11,7 +23,7 @@ if($_GET['status'] = 1){
 </head>
 <body>
 <div class="login">
-<form action="login.php" method="POST">
+<form action="user.php?action=login" method="POST">
 <label>Gebruikersnaam: </label>
 <input type="text" name="username" placeholder="Vul uw gebruikersnaam in"></input>
 <label>Wachtwoord: </label>
