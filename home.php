@@ -29,11 +29,7 @@ if (@include 'functions.php') {
     </div>
     <div class="contentBox">
         <div class="contentTile">
-            <div id="nav">
-                <a class="route" href="home.php">Home</a>
-                <a class="route" href="overzichten.php">Overzichten</a>
-                <a class="route" href="index.php"></a>
-            </div>
+            <?php include("navigatie.php"); ?>
         </div>
     </div>
     <div class="contentBox">

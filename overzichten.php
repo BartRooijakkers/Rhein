@@ -39,11 +39,7 @@ $result = mysqli_query($conn, $sql);
     </div>
     <div class="contentBox">
         <div class="contentTile">
-            <div id="nav">
-                <a class="route" href="home.php">Home</a>
-                <a class="route" href="overzichten.php">Overzichten</a>
-                <a class="route" href="index.php"></a>
-            </div>
+            <?php include("navigatie.php"); ?>
         </div>
     </div>
     <table>
@@ -54,21 +50,21 @@ $result = mysqli_query($conn, $sql);
             <th>Akkoord</th>
             <th>Details</th>
         </tr>
-            <?php
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    switch($row['akkoord']){
-                        case 1:
-                            $akkoord = "<p style='color:green; font-weight:bold;'>Goedgekeurd</p>";
+        <?php
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                switch ($row['akkoord']) {
+                    case 1:
+                        $akkoord = "<p style='color:green; font-weight:bold;'>Goedgekeurd</p>";
                         break;
-                        case 2:
-                            $akkoord = "<p style='color:red; font-weight:bold;'>Afgewezen</p>";
+                    case 2:
+                        $akkoord = "<p style='color:red; font-weight:bold;'>Afgewezen</p>";
                         break;
-                    }
-                    echo "<tr><td>" . $row['opdracht_nummer'] . "</td><td>" . $row['volg_nummer'] . "</td><td>" . $row['CAST(hijstesten.datum_opgesteld AS DATE)'] . "</td><td>" . $akkoord . "</td></tr>";
                 }
+                echo "<tr><td>" . $row['opdracht_nummer'] . "</td><td>" . $row['volg_nummer'] . "</td><td>" . $row['CAST(hijstesten.datum_opgesteld AS DATE)'] . "</td><td>" . $akkoord . "</td></tr>";
             }
-            ?>
+        }
+        ?>
     </table>
 </body>
 
