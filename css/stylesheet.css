@@ -9,8 +9,6 @@ form label{
 }
 form input{
     display: block;
-    margin-top: 5%;
-    margin-bottom: 5%;
 }
 form button{
     margin-top:5%;
@@ -23,6 +21,15 @@ form button{
     position: absolute;
     left:2%;
     top:5%;
+}
+
+.login form input{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+form.addUser button{
+    margin-top:1.5%;
 }
 /* Logo */
 #logo {
@@ -71,6 +78,16 @@ form button{
     background-repeat: no-repeat;
     background-size: 100%;
 }
+#gebruikerToevoegen{
+    background: url(../images/gebruikerToevoegen.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#gebruikerToevoegen:hover {
+    background: url(../images/gebruikerToevoegenActief.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
 /* Content sizing & verdeling */
 .contentBox{
     width:100%;
@@ -82,6 +99,12 @@ form button{
      position: relative;
      height:auto;
      width:33%;
+     display: inline-block;
+ }
+ .contentBox .contentTile20 {
+     position: relative;
+     height: auto;
+     width: 20%;
      display: inline-block;
  }
  .contentBox .contentTile .pageTitle{
@@ -108,6 +131,18 @@ form button{
      display: table;
      border:1px solid black;
  }
+table tr:first-of-type{
+    background-color: black !important;
+    color:white;
+    font-weight: bold;
+}
+
+table tr:nth-child(even){
+    background-color: rgb(165, 157, 157);
+}
+table tr:nth-child(odd) {
+    background-color: rgb(180, 164, 164);
+}
  table th{
     border: 1px solid black;
  }
