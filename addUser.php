@@ -7,7 +7,9 @@ if (@include 'functions.php') {
 } else {
     echo "error";
 }
-
+if(@$_GET['userAdded'] == 1){
+    echo "user Added!";
+}
 ?>
 
 <html>
@@ -39,15 +41,15 @@ if (@include 'functions.php') {
     </div>
     <div class="contentBox">
         <div class="contentTile">
-            <form class="addUser" action="" method="POST">
+            <form class="addUser" action="user.php?action=addUser" method="POST">
                 <label for="username">Gebruikersnaam*:</label>
-                <input type="text" name="username"></input>
+                <input type="text" name="username" required></input>
                 <label for="username">Voornaam*:</label>
-                <input type="text" name="voornaam"></input>
+                <input type="text" name="voornaam" required></input>
                 <label for="username">Tussenvoegsel:</label>
                 <input type="text" name="tussenvoegsel"></input>
                 <label for="username">Achternaam*:</label>
-                <input type="text" name="achternaam"></input>
+                <input type="text" name="achternaam" required></input>
 
                 <button>Toevoegen</button>
             </form>

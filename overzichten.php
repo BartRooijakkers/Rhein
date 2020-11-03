@@ -48,7 +48,6 @@ $result = mysqli_query($conn, $sql);
             <th>Volg nummer</th>
             <th>Datum</th>
             <th>Akkoord</th>
-            <th>Details</th>
         </tr>
         <?php
         if (mysqli_num_rows($result) > 0) {
@@ -61,7 +60,7 @@ $result = mysqli_query($conn, $sql);
                         $akkoord = "<p style='color:red; font-weight:bold;'>Afgewezen</p>";
                         break;
                 }
-                echo "<tr><td>" . $row['opdracht_nummer'] . "</td><td>" . $row['volg_nummer'] . "</td><td>" . $row['CAST(hijstesten.datum_opgesteld AS DATE)'] . "</td><td>" . $akkoord . "</td></tr>";
+                echo "<tr onclick='location.href=`details.php?id=".$row['opdracht_nummer']."`;'><td>" . $row['opdracht_nummer'] . "</td><td>" . $row['volg_nummer'] . "</td><td>" . $row['CAST(hijstesten.datum_opgesteld AS DATE)'] . "</td><td>" . $akkoord . "</td></tr>";
             }
         }
         ?>

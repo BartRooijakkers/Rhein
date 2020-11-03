@@ -1,4 +1,11 @@
 <?php
+   $hostName = "localhost";
+   $username = "root";
+   $password = "";
+   $database = "rhein";
+
+   $conn = mysqli_connect($hostName, $username, $password, $database);
+
 session_start();
 if (!isset($_SESSION['userID'])) {
     header('Location:index.php');
@@ -15,13 +22,7 @@ function logOut(){
 }
 
 function logIn(){
-    $hostName = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "rhein";
-
-    $conn = mysqli_connect($hostName, $username, $password, $database);
-
+    global $conn;
     if (!$conn) {
         echo "Error " . mysqli_error($conn);
     }
@@ -47,5 +48,20 @@ function logIn(){
     } else {
         header('Location:index.php?status=2');
     }
+}
+
+function insertUser($username,$voornaam,$achternaam,$tussenvoegsel){
+    global $conn;
+    if (!$conn) {
+        echo "Error " . mysqli_error($conn);
+    }
+    echo $tussenvoegsel;
+    $sql = "INSERT INTO gebruikers(`voor_naam`,`achter_naam`,`tussenvoegsel`,`username`) VALUES('$voornaam','$achternaam','$tussenvoegsel','$username');";
+    $result = mysqli_query($conn,$sql);
+    if ($result) {
+        echo "<script> alert('Gebruiker:". $_POST['username'] . "toegevoegd!');</script>";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      }
 }
 ?>

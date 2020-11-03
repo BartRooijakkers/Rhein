@@ -7,7 +7,6 @@ if (@include 'functions.php') {
 } else {
     echo "error";
 }
-
 ?>
 
 <html>

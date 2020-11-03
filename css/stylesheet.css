@@ -131,17 +131,19 @@ form.addUser button{
      display: table;
      border:1px solid black;
  }
+table tr:nth-child(even){
+    background-color: rgb(165, 157, 157);
+    cursor: pointer;
+}
+table tr:nth-child(odd) {
+    background-color: rgb(180, 164, 164);
+    cursor: pointer;
+}
 table tr:first-of-type{
     background-color: black !important;
     color:white;
     font-weight: bold;
-}
-
-table tr:nth-child(even){
-    background-color: rgb(165, 157, 157);
-}
-table tr:nth-child(odd) {
-    background-color: rgb(180, 164, 164);
+    cursor: default;
 }
  table th{
     border: 1px solid black;
