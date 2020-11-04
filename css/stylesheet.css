@@ -31,6 +31,41 @@ form button{
 form.addUser button{
     margin-top:1.5%;
 }
+
+form.keuring label{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 1%;
+}
+form.keuring label:first-of-type {
+    margin-top: 3%;
+}
+form.keuring input {
+    display: block;
+    margin-bottom: 2%;
+}
+form.keuring select{
+     display: block;
+     margin-bottom: 2%;
+}
+form.keuring .formTile{
+    display:none;
+    margin-left:1%;
+}
+form.keuring .formTitle{
+    cursor: pointer;
+    border: 1px solid black;
+    background:red;
+}
+
+form.keuring .formTitle:hover{
+    background: rgb(235, 130, 130);
+}
+
+form.keuring textarea{
+    display: block;
+    margin-bottom: 2%;
+}
 /* Logo */
 #logo {
     width: auto;

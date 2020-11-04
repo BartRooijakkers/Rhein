@@ -34,8 +34,8 @@ if (@include 'functions.php') {
     </div>
     <div class="contentBox">
         <div class="choices">
-            <div class="option" id="hijstest"></div>
-            <div class="option" id="kabeltest"></div>
+            <div class="option" id="hijstest" onclick="location.href='keuring.php?keuring=hijs'"></div>
+            <div class="option" id="kabeltest" onclick="location.href='keuring.php?keuring=kabel'"></div>
         </div>
     </div>
     <div class="contentBox"></div>

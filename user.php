@@ -18,6 +18,9 @@ switch ($_GET['action']) {
         }
         header("location:addUser.php?userAdded=1");
     break;
+    case 'addTest':
+        echo"jeff";
+    break;
     default:
         speak($_SESSION['naam']);
         logOut();
