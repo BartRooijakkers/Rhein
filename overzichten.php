@@ -39,7 +39,7 @@ $result = mysqli_query($conn, $sql);
     </div>
     <div class="contentBox">
         <div class="contentTile">
-            <?php include("navigatie.php"); ?>
+            <?php include("include/navigatie.php"); ?>
         </div>
     </div>
     <table>

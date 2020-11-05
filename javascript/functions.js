@@ -1,12 +1,17 @@
 function toggleDisplay(id){
-    object = document.getElementById(id);
-    console.log(id);
-    console.log(object);
-    if(object.style.display != "block"){
-        console.log('not shown');
-        object.style.display ='block';
+    object = document.getElementsByClassName(id);
+    if(object[0].style.display != "inline-block"){
+        let i = 0;
+        while(i < object.length){
+            object[i].style.display ='inline-block';
+            i++;
+        }
     }else{
-        console.log("shown");
-        object.style.display ='none';
+        let i = 0;
+        while(i < object.length){
+            object[i].style.display ='none';
+            i++;
+        }
     }
 }
+console.log(document.getElementById('typeOfTest').value);

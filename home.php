@@ -29,7 +29,7 @@ if (@include 'functions.php') {
     </div>
     <div class="contentBox">
         <div class="contentTile">
-            <?php include("navigatie.php"); ?>
+            <?php include("include/navigatie.php"); ?>
         </div>
     </div>
     <div class="contentBox">

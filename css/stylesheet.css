@@ -37,7 +37,7 @@ form.keuring label{
     font-weight: bold;
     margin-bottom: 1%;
 }
-form.keuring label:first-of-type {
+form.keuring label:first-child {
     margin-top: 3%;
 }
 form.keuring input {
@@ -50,21 +50,50 @@ form.keuring select{
 }
 form.keuring .formTile{
     display:none;
+    position: relative;
+    top:0%;
+    width:32%;
+}
+form.keuring .formTile:first-child{
     margin-left:1%;
 }
 form.keuring .formTitle{
     cursor: pointer;
     border: 1px solid black;
-    background:red;
+    background:#F6C35C;
 }
-
+form.keuring .formTitle h2 {
+    margin-left: 1%;
+}
 form.keuring .formTitle:hover{
-    background: rgb(235, 130, 130);
+    background: rgb(64, 179, 207);
 }
 
 form.keuring textarea{
     display: block;
     margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+form.keuring button{
+    float:right;
+    padding:1%;
+}
+form.keuring button:hover {
+    background: rgb(0, 128, 0);
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul li{
+    display: inline;
+    position: relative;
+    top:0%;
+}
+#typeOfTest{
+    display: none;
 }
 /* Logo */
 #logo {
@@ -130,6 +159,9 @@ form.keuring textarea{
     height:auto;
     display: block;
 }
+.contentBox.form {
+    min-height: auto;
+}
  .contentBox .contentTile {
      position: relative;
      height:auto;
@@ -140,6 +172,12 @@ form.keuring textarea{
      position: relative;
      height: auto;
      width: 20%;
+     display: inline-block;
+ }
+ .contentBox .contentTile25 {
+     position: relative;
+     height: auto;
+     width: 25%;
      display: inline-block;
  }
  .contentBox .contentTile .pageTitle{
