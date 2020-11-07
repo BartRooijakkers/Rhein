@@ -205,11 +205,11 @@ ul li{
      border:1px solid black;
  }
 table tr:nth-child(even){
-    background-color: rgb(165, 157, 157);
+    background-color: #d5f4e6;
     cursor: pointer;
 }
 table tr:nth-child(odd) {
-    background-color: rgb(180, 164, 164);
+    background-color:#80ced6;
     cursor: pointer;
 }
 table tr:first-of-type{

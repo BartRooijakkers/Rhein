@@ -30,8 +30,8 @@
             <option value="afleggen" style="background:red; color:white; font-weight:bold;">Afleggen</option>
         </select>
 
-        <label class="voorbladLabel" for="vermindere_kabeldiameter">Verminderde kabeldiameter in %:</label>
-        <input type="number" name="vermindere_kabeldiameter" placeholder="Vul Verminderde kabeldiameter in % in"></input>
+        <label class="voorbladLabel" for="verminderde_kabeldiameter">Verminderde kabeldiameter in %:</label>
+        <input type="number" name="verminderde_kabeldiameter" placeholder="Vul Verminderde kabeldiameter in % in"></input>
     </li>
     <li class="formTile testUitvoeren">
         <label class="voorbladLabel" for="positie_meetpunten">Positie van meetpunten:</label>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 20 okt 2020 om 15:59
--- Serverversie: 10.1.38-MariaDB
--- PHP-versie: 7.3.2
+-- Gegenereerd op: 07 nov 2020 om 00:59
+-- Serverversie: 10.4.6-MariaDB
+-- PHP-versie: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,7 +59,7 @@ CREATE TABLE `hijstesten` (
   `toelaatbare_bedrijfslast` double(11,2) NOT NULL,
   `lmb_in_werking` double(11,2) NOT NULL,
   `proeflast` double(11,2) NOT NULL,
-  `akkoord` tinyint(1) NOT NULL
+  `akkoord` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -102,7 +102,7 @@ CREATE TABLE `keuringsitems` (
 CREATE TABLE `voorbladen` (
   `opdracht_nummer` int(11) NOT NULL,
   `TCVT_nummer` int(11) NOT NULL,
-  `keurings_datum` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `keurings_datum` datetime NOT NULL DEFAULT current_timestamp(),
   `uitvoerder` int(11) NOT NULL,
   `deskundige` varchar(255) NOT NULL,
   `opstelling_kraan` int(11) NOT NULL,
@@ -137,6 +137,18 @@ CREATE TABLE `voorbladen` (
 --
 ALTER TABLE `gebruikers`
   ADD PRIMARY KEY (`gebruiker_ID`);
+
+--
+-- Indexen voor tabel `hijstesten`
+--
+ALTER TABLE `hijstesten`
+  ADD PRIMARY KEY (`opdracht_nummer`,`volg_nummer`);
+
+--
+-- Indexen voor tabel `kabelchecklisten`
+--
+ALTER TABLE `kabelchecklisten`
+  ADD PRIMARY KEY (`opdracht_nummer`,`kabel_ID`);
 
 --
 -- Indexen voor tabel `voorbladen`

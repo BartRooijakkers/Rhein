@@ -16,8 +16,11 @@
         <label class="voorbladLabel" for="hulpgiek_lengte">Gieklengte hulpgiek:</label>
         <input type="number" name="hulpgiek_lengte" placeholder="Vul Gieklengte in"></input>
 
-        <label class="voorbladLabel" for="hoofdgiek_lengte">Gieklengte Hoofdgiek:</label>
-        <input type="number" name="hoofdgiek_lengte" placeholder="Vul Gieklengte in"></input>
+        <label class="voorbladLabel" for="hoofdgiek_giekhoek">Giekhoek Hoofdgiek:</label>
+        <input type="number" name="hoofdgiek_giekhoek" placeholder="Vul Giekhoek in"></input>
+
+        <label class="voorbladLabel" for="hulpgiek_giekhoek">Giekhoek Hulpgiek:</label>
+        <input type="number" name="hulpgiek_giekhoek" placeholder="Vul Giekhoek in"></input>
 
         <label class="voorbladLabel" for="hijskabel_aantal_parten">Aantal parten hijskabel:</label>
         <input type="number" name="hijskabel_aantal_parten" placeholder="Vul aantal parten in"></input>
@@ -35,8 +38,11 @@
         <label class="voorbladLabel" for="lmb_in_werking">LMB Treedt in werking bij:</label>
         <input type="number" name="lmb_in_werking" placeholder="Vul LMB werking in"></input>
 
+        <label class="voorbladLabel" for="proeflast">Proeflast:</label>
+        <input type="number" name="proeflast" placeholder="Vul Proeflast in"></input>
+
         <label class="voorbladLabel" for="akkoord">Akkoord:</label>
-        <input type="checkbox" name="akkoord" placeholder="Vul LMB werking in"></input>
+        <input type="checkbox" name="akkoord" value="1" placeholder="Akkoord"></input>
 
     </li>
 </ul>

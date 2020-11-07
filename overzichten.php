@@ -56,7 +56,7 @@ $result = mysqli_query($conn, $sql);
                     case 1:
                         $akkoord = "<p style='color:green; font-weight:bold;'>Goedgekeurd</p>";
                         break;
-                    case 2:
+                    case 0:
                         $akkoord = "<p style='color:red; font-weight:bold;'>Afgewezen</p>";
                         break;
                 }

@@ -3,6 +3,9 @@ if (@include 'functions.php') {
 } else {
     echo "error";
 }
+if(@$_GET['status'] == 1){
+    echo "<script>alert('Keuring voltooid!');</script>";
+}
 ?>
 
 <html>

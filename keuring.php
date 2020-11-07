@@ -1,9 +1,6 @@
 <?php
 if (@include 'functions.php') {
-    if ($_SESSION['afdeling'] != 12) {
-        echo "<script> alert('U beschikt niet over admin rechten');</script>";
-        header('Location:home.php');
-    }
+    
 } else {
     echo "error";
 }
@@ -36,8 +33,8 @@ if (@include 'functions.php') {
         </div>
     </div>
     <!-- Start keuring formulier -->
-    <form class="keuring" action="user.php?action=addTest" method="POST">
-        <input type="text" id="typeOfTest" value=""></input>
+    <form class="keuring" action="user.php?action=keuring" method="POST">
+        <input type="text" id="typeOfTest" name="typeOfTest" value=""></input>
             <div class="formTitle" data-ID='jeff' onclick="toggleDisplay('voorbladen');">
                 <h2>Voorbladen</h2>
             </div>
@@ -132,8 +129,8 @@ if (@include 'functions.php') {
                         <label class="voorbladLabel" for="handtekening">Handtekening:</label>
                         <textarea name="handtekening" placeholder="Vul Handtekening in" rows="4" required></textarea>
 
-                        <label class="voorbladLabel" for="handtekening">Aantal bedrijfsuren:</label>
-                        <input type="number" name="handtekening" placeholder="Vul Aantal bedrijfsuren in" required></input>
+                        <label class="voorbladLabel" for="aantal_bedrijfsuren">Aantal bedrijfsuren:</label>
+                        <input type="number" name="aantal_bedrijfsuren" placeholder="Vul Aantal bedrijfsuren in" required></input>
 
                         <label class="voorbladLabel" for="afleg_redenen">Afleg Redenen:</label>
                         <textarea name="afleg_redenen" placeholder="Vul Afleg redenen in" rows="4" required></textarea>
