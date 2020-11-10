@@ -10,7 +10,7 @@ $database = "rhein";
 
 $conn = mysqli_connect($hostName, $username, $password, $database);
 
-$sql = "SELECT hijstesten.opdracht_nummer, hijstesten.volg_nummer, CAST(hijstesten.datum_opgesteld AS DATE), hijstesten.akkoord FROM hijstesten";
+$sql = "SELECT hijstesten.*, kabelchecklisten.*, voorbladen.*, DATE_FORMAT(voorbladen.keurings_datum,'%d/%m/%Y') AS keuring_datum FROM voorbladen LEFT JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer LEFT JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer";
 
 $result = mysqli_query($conn, $sql);
 ?>
@@ -45,6 +45,7 @@ $result = mysqli_query($conn, $sql);
     <table>
         <tr>
             <th>Opdracht Nummer</th>
+            <th>Soort Test</th>
             <th>Volg nummer</th>
             <th>Datum</th>
             <th>Akkoord</th>
@@ -60,7 +61,18 @@ $result = mysqli_query($conn, $sql);
                         $akkoord = "<p style='color:red; font-weight:bold;'>Afgewezen</p>";
                         break;
                 }
-                echo "<tr onclick='location.href=`details.php?id=".$row['opdracht_nummer']."`;'><td>" . $row['opdracht_nummer'] . "</td><td>" . $row['volg_nummer'] . "</td><td>" . $row['CAST(hijstesten.datum_opgesteld AS DATE)'] . "</td><td>" . $akkoord . "</td></tr>";
+                switch ($row['soort_keuring']){
+                    case 1:
+                        $soort_keuring = "<p style='color:blue; font-weight:bold;'>Hijstest</p>";
+                    break;
+                    case 2:
+                        $soort_keuring = "<p style='color:brown; font-weight:bold;'>Kabeltest</p>";
+                    break;
+                    default:
+                    $soort_keuring = "Niet vermeld.";
+                    break;
+                }
+                echo "<tr onclick='location.href=`details.php?type=". $row['soort_keuring'] ."id=".$row['opdracht_nummer']."`;'><td>" . $row['opdracht_nummer'] . "</td><td>" . $soort_keuring . "</td><td>" . $row['volg_nummer'] . "</td><td>" . $row['keuring_datum'] . "</td><td>" . $akkoord . "</td></tr>";
             }
         }
         ?>

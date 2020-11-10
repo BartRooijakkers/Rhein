@@ -38,6 +38,14 @@ CREATE TABLE `gebruikers` (
   `afdeling` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `gebruikers`
+--
+
+INSERT INTO `gebruikers` (`gebruiker_ID`, `voor_naam`, `achter_naam`, `tussenvoegsel`, `username`, `password`, `afdeling`) VALUES
+(1, 'Bart', 'Rooijakkers', NULL, 'bart.ar', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 1),
+(2, 'Admin', 'istrator', NULL, 'admin', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 12);
+
 -- --------------------------------------------------------
 
 --
@@ -62,6 +70,14 @@ CREATE TABLE `hijstesten` (
   `akkoord` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `hijstesten`
+--
+
+INSERT INTO `hijstesten` (`opdracht_nummer`, `volg_nummer`, `datum_opgesteld`, `hoofdgiek_lengte`, `mech_sectie_gieklengte`, `hulpgiek_lengte`, `hoofdgiek_giekhoek`, `hulpgiek_giekhoek`, `hijskabel_aantal_parten`, `zwenkhoek`, `eigen_massa_ballast`, `toelaatbare_bedrijfslast`, `lmb_in_werking`, `proeflast`, `akkoord`) VALUES
+(15, 70, '2020-11-19 00:00:00', 4.00, 111.00, 222.00, 3131.00, 1313.00, 13123, 12312.00, 123123.00, 132123.00, 12312.00, 3213.00, 0),
+(16, 2131321, '2020-11-19 00:00:00', 12313.00, 12312312.00, 312312.00, 3123123.00, 213123.00, 2132, 13123.00, 12312.00, 21312.00, 21312.00, 31231.00, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -81,6 +97,13 @@ CREATE TABLE `kabelchecklisten` (
   `type_beschadiging_roest` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Gegevens worden geëxporteerd voor tabel `kabelchecklisten`
+--
+
+INSERT INTO `kabelchecklisten` (`opdracht_nummer`, `kabel_ID`, `draadbreuk_6D`, `draadbreuk_30D`, `beschadiging_buitzenzijde`, `beschadiging_roest_corrosie`, `verminderde_kabeldiameter`, `positie_meetpunten`, `beschadiging_totaal`, `type_beschadiging_roest`) VALUES
+(17, 9, 5, 5, 5, 5, 5, 5, 5, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +115,13 @@ CREATE TABLE `keuringsitems` (
   `keurings_onderdeel` int(11) NOT NULL,
   `directe_voorziening` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `keuringsitems`
+--
+
+INSERT INTO `keuringsitems` (`opdracht_nummer`, `keurings_onderdeel`, `directe_voorziening`) VALUES
+(1, 28, 4);
 
 -- --------------------------------------------------------
 
@@ -130,6 +160,15 @@ CREATE TABLE `voorbladen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Gegevens worden geëxporteerd voor tabel `voorbladen`
+--
+
+INSERT INTO `voorbladen` (`opdracht_nummer`, `TCVT_nummer`, `soort_keuring`, `keurings_datum`, `uitvoerder`, `deskundige`, `opstelling_kraan`, `uitvoering_toren_haakhoogte`, `soort_giek`, `telescoopgiek_delen`, `opbouwgiek_meters`, `hulpgiek_meters`, `fly_jib_delen`, `gieklengte`, `topbaar`, `loopkat`, `verstelbare_giek`, `soort_stempels`, `tekortkomingen`, `afmelden_voor`, `toelichting`, `werk_instructie`, `kabel_leverancier`, `waarnemingen`, `handtekening`, `aantal_bedrijfsuren`, `afleg_redenen`) VALUES
+(15, 80, 1, '2020-11-07 00:00:00', 1, 'Thomas', 0, 80, 0, 4.00, 1.00, 3.00, 43, 21.00, 22.00, 0, 0, 8, 13, '2020-11-13 00:00:00', 'Hoertje', 'Hoertje', 'Hoertje', 'Hoertje', 'Hoertje', 11.00, 'Hoertje'),
+(16, 11221, 1, '2020-11-07 00:00:00', 1, '231231', 0, 123123, 0, 123123.00, 12312.00, 3123123.00, 123123, 123123.00, 213123.00, 0, 0, 3123123, 127, '2020-11-27 00:00:00', '123123', '123123', '213213', '3123', '12312', 2313.00, '123'),
+(17, 77, 2, '2020-11-10 01:26:20', 1, 'Thom', 122, 333, 12, 4.00, 4.00, 4.00, 4, 4.00, 4.00, 8, 8, 88, 8, '2020-10-21 00:00:00', 'ssadsd', 'sdasdsa', 'dasdasd', 'sadsad', 'asdsadsa', 11.00, 'sadasd');
+
+--
 -- Indexen voor geëxporteerde tabellen
 --
 
@@ -165,13 +204,13 @@ ALTER TABLE `voorbladen`
 -- AUTO_INCREMENT voor een tabel `gebruikers`
 --
 ALTER TABLE `gebruikers`
-  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT voor een tabel `voorbladen`
 --
 ALTER TABLE `voorbladen`
-  MODIFY `opdracht_nummer` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `opdracht_nummer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
