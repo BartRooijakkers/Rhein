@@ -8,9 +8,10 @@ $username = "root";
 $password = "";
 $database = "rhein";
 
-$conn = mysqli_connect($hostName, $username, $password, $database);
+global $conn;
 
-$sql = "SELECT hijstesten.*, kabelchecklisten.*, voorbladen.*, DATE_FORMAT(voorbladen.keurings_datum,'%d/%m/%Y') AS keuring_datum FROM voorbladen LEFT JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer LEFT JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer";
+$sql = "SELECT hijstesten.*, kabelchecklisten.*, voorbladen.*, gebruikers.voor_naam, gebruikers.achter_naam, DATE_FORMAT(voorbladen.keurings_datum,'%d/%m/%Y') AS keuring_datum FROM voorbladen LEFT JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer
+ LEFT JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer INNER JOIN gebruikers on voorbladen.uitvoerder = gebruikers.gebruiker_ID ORDER BY voorbladen.opdracht_nummer DESC;";
 
 $result = mysqli_query($conn, $sql);
 ?>
@@ -42,12 +43,14 @@ $result = mysqli_query($conn, $sql);
             <?php include("include/navigatie.php"); ?>
         </div>
     </div>
+    <div class="contentBox">
     <table>
         <tr>
-            <th>Opdracht Nummer</th>
+            <th>Opdracht #</th>
             <th>Soort Test</th>
-            <th>Volg nummer</th>
+            <th>Referentie #</th>
             <th>Datum</th>
+            <th>Uitvoerder</th>
             <th>Akkoord</th>
         </tr>
         <?php
@@ -72,11 +75,18 @@ $result = mysqli_query($conn, $sql);
                     $soort_keuring = "Niet vermeld.";
                     break;
                 }
-                echo "<tr onclick='location.href=`details.php?type=". $row['soort_keuring'] ."id=".$row['opdracht_nummer']."`;'><td>" . $row['opdracht_nummer'] . "</td><td>" . $soort_keuring . "</td><td>" . $row['volg_nummer'] . "</td><td>" . $row['keuring_datum'] . "</td><td>" . $akkoord . "</td></tr>";
+                if(!isset($row['volg_nummer'])){
+                    $referentie_nummer = $row['kabel_ID'];
+                }else{
+                    $referentie_nummer =$row['volg_nummer'];
+                }
+                $naam = "<b>" . substr($row['voor_naam'], 0,1) . ". " . $row['achter_naam'] . "</b>";
+                echo "<tr onclick='location.href=`details.php?type=". $row['soort_keuring'] ."&id=".$row['opdracht_nummer']."`;'><td>" . $row['opdracht_nummer'] . "</td><td>" . $soort_keuring . "</td><td>" . $referentie_nummer . "</td><td>" . $row['keuring_datum'] . "</td><td>". $naam."</td><td>" . $akkoord . "</td></tr>";
             }
         }
         ?>
     </table>
+    </div>
 </body>
 
 </html>

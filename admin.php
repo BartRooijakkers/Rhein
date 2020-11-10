@@ -38,7 +38,6 @@ if (@include 'functions.php') {
     <div class="contentBox">
         <div class="choices">
             <a href="addUser.php"><div class="option" id="gebruikerToevoegen"></div></a>
-            <div class="option" id="kabeltest"></div>
         </div>
     </div>
     <div class="contentBox"></div>

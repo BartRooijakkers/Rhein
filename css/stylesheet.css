@@ -168,6 +168,12 @@ ul li{
      width:33%;
      display: inline-block;
  }
+ .contentBox .contentTileAuto {
+    position: relative;
+    height:auto;
+    width:auto;
+    display: inline-block;
+}
  .contentBox .contentTile20 {
      position: relative;
      height: auto;

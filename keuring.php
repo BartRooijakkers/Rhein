@@ -35,10 +35,10 @@ if (@include 'functions.php') {
     <!-- Start keuring formulier -->
     <form class="keuring" action="user.php?action=keuring" method="POST">
         <input type="text" id="typeOfTest" name="typeOfTest" value=""></input>
+            <div class="contentBox form" style="border: 1px solid black;">
             <div class="formTitle" data-ID='jeff' onclick="toggleDisplay('voorbladen');">
                 <h2>Voorbladen</h2>
             </div>
-            <div class="contentBox form" style="border: 1px solid black;">
                 <!-- Voorbladen formulier -->
                 <ul>
                     <li class="formTile voorbladen">
@@ -162,5 +162,6 @@ if (@include 'functions.php') {
 
 </body>
 <script src='javascript/functions.js'></script>
+<script> toggleDisplay('voorbladen'); </script>
 
 </html>

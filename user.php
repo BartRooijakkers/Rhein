@@ -23,6 +23,11 @@ switch ($_GET['action']) {
         if (!$conn) {
             echo "Error " . mysqli_error($conn);
         }
+        if($_POST['typeOfTest'] == "hijstest"){
+            $soort_keuring = 1;
+        }else{
+            $soort_keuring = 2;
+        }
         // waardes uit het formulier halen
         $TCVT = $_POST['TCVT'];
         $keurings_datum = $_POST['keurings_datum'];
@@ -50,8 +55,11 @@ switch ($_GET['action']) {
         $aantal_bedrijfsuren = $_POST['aantal_bedrijfsuren'];
         $afleg_redenen = $_POST['afleg_redenen'];
         //Query opstellen
-        $sql = "INSERT INTO `voorbladen`(`TCVT_nummer`, `keurings_datum`, `uitvoerder`, `deskundige`, `opstelling_kraan`, `uitvoering_toren_haakhoogte`, `soort_giek`, `telescoopgiek_delen`, `opbouwgiek_meters`, `hulpgiek_meters`, `fly_jib_delen`, `gieklengte`, `topbaar`, `loopkat`, `verstelbare_giek`, `soort_stempels`, `tekortkomingen`, `afmelden_voor`, `toelichting`, `werk_instructie`, `kabel_leverancier`, `waarnemingen`, `handtekening`, `aantal_bedrijfsuren`, `afleg_redenen`)
-                 VALUES ('$TCVT','$keurings_datum','$uitvoerder','$deskundige','$opstelling_kraan','$uitvoering_toren_haakhoogte','$soort_giek','$telescoopgiek_delen','$opbouwgiek_meters','$hulpgiek_meters','$fly_jib_delen','$gieklengte','$topbaar','$loopkat','$verstelbare_giek','$soort_stempels','$tekortkomingen','$afmelden_voor','$toelichting','$werkinstructie','$kabel_leverancier','$waarnemingen','$handtekening','$aantal_bedrijfsuren','$afleg_redenen')";
+        $sql = "INSERT INTO `voorbladen`(`TCVT_nummer`,`soort_keuring`, `keurings_datum`, `uitvoerder`, `deskundige`, `opstelling_kraan`, `uitvoering_toren_haakhoogte`, `soort_giek`, `telescoopgiek_delen`, `opbouwgiek_meters`, `hulpgiek_meters`, `fly_jib_delen`, `gieklengte`, `topbaar`, `loopkat`, `verstelbare_giek`, `soort_stempels`, `tekortkomingen`, `afmelden_voor`, `toelichting`, `werk_instructie`, `kabel_leverancier`, `waarnemingen`, `handtekening`, `aantal_bedrijfsuren`, `afleg_redenen`)
+                 VALUES ('$TCVT','$soort_keuring','$keurings_datum','$uitvoerder','$deskundige','$opstelling_kraan','$uitvoering_toren_haakhoogte','$soort_giek','$telescoopgiek_delen','$opbouwgiek_meters','$hulpgiek_meters','$fly_jib_delen','$gieklengte','$topbaar','$loopkat','$verstelbare_giek','$soort_stempels','$tekortkomingen','$afmelden_voor','$toelichting','$werkinstructie','$kabel_leverancier','$waarnemingen','$handtekening','$aantal_bedrijfsuren','$afleg_redenen')";
+        /**
+         * * Checken welk type keuring het is
+         */
         switch ($_POST['typeOfTest']) {
             case 'hijstest':
                 $volg_nummer = $_POST['volg_nummer'];
@@ -92,7 +100,20 @@ switch ($_GET['action']) {
                 $positie_meetpunten = $_POST['positie_meetpunten'];
                 $beschadiging_totaal = $_POST['beschadiging_totaal'];
                 $type_beschadiging_roest = $_POST['type_beschadiging_roest'];
-                echo $afleg_redenen;
+                /**
+                 * * Als query gelukt is: voer de volgende query uit
+                 */
+                if ($conn->multi_query($sql) === TRUE) {
+                    $last_id = mysqli_insert_id($conn);
+                    $sql1 = "INSERT INTO `kabelchecklisten`(`opdracht_nummer`, `kabel_ID`, `draadbreuk_6D`, `draadbreuk_30D`, `beschadiging_buitzenzijde`, `beschadiging_roest_corrosie`, `verminderde_kabeldiameter`, `positie_meetpunten`, `beschadiging_totaal`, `type_beschadiging_roest`) 
+                    VALUES ('$last_id','$kabel_ID','$draadbreuk_6D','$draadbreuk_30D','$beschadiging_buitenzijde','$beschadiging_roest_corrosie','$verminderde_kabeldiameter','$positie_meetpunten','$beschadiging_totaal','$type_beschadiging_roest');";
+                    /* Als query gelukt is redirect naar mijnincidenten */
+                    $conn->multi_query($sql1);
+                    header("location:home.php?status=1");
+                } else {
+                    /* Wanneer de query mislukt toont hij: Error */
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
                 break;
             default:
                 echo "error";
