@@ -8,7 +8,7 @@ if(@$_GET['status'] == 1){
 }
 ?>
 
-<html>
+<html style="background:url(images/background.jpeg);">
 
 <head>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
@@ -22,7 +22,7 @@ if(@$_GET['status'] == 1){
         </div>
         <div class="contentTile">
             <?php
-            echo "<p style='text-align:center;'>Welkom <b>" . $_SESSION['naam'] . " " . $_SESSION['achternaam'] . "</b>!"
+            echo "<p style='text-align:center;'>Welkom <b>" . $_SESSION['naam'] . " " . $_SESSION['achternaam'] . "</b>!";
             ?>
             <br><a href="user.php?action=logout">Uitloggen</a>
         </div>

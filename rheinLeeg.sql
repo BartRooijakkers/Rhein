@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 nov 2020 om 01:36
+-- Gegenereerd op: 16 nov 2020 om 23:40
 -- Serverversie: 10.4.6-MariaDB
 -- PHP-versie: 7.3.9
 
@@ -73,7 +73,7 @@ CREATE TABLE `kabelchecklisten` (
   `kabel_ID` int(11) NOT NULL,
   `draadbreuk_6D` int(11) NOT NULL,
   `draadbreuk_30D` int(11) NOT NULL,
-  `beschadiging_buitzenzijde` int(11) NOT NULL,
+  `beschadiging_buitenzijde` int(11) NOT NULL,
   `beschadiging_roest_corrosie` int(11) NOT NULL,
   `verminderde_kabeldiameter` int(11) NOT NULL,
   `positie_meetpunten` int(11) NOT NULL,
