@@ -34,9 +34,20 @@ form button:hover{
     top:5%;
 }
 
+.login form{
+    min-width:100%;
+    width:auto;
+    height:auto;
+    box-shadow: inset 0 0 0 1000px #fff2ccdc;
+    border-radius: 5px;
+    padding:5%;
+}
+
 .login form input{
     margin-top: 6%;
     margin-bottom: 10%;
+    width:auto;
+    max-width:100%;
 }
 
 form.addUser button{

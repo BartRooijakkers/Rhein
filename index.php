@@ -1,17 +1,6 @@
 <?php
 session_start();
 if (!isset($_SESSION['userID'])) {
-    switch (@$_GET['status']) {
-        case 1:
-            echo "<span'>u bent uitgelogd.</span>";
-            break;
-        case 2:
-            echo "<span style='color:red;'>Onjuist gebruikersnaam en/of wachtwoord.</span>";
-            break;
-        default:
-            echo "<span style='color:red;'>U bent niet ingelogd.</span>";
-            break;
-    }
 } else {
     header('Location:home.php');
 }
@@ -24,7 +13,29 @@ if (!isset($_SESSION['userID'])) {
 </head>
 
 <body>
-    <div class="contentBox" style="height:30%;">
+    <!-- <div class="contentBox" style="height:30%;">
+    </div> -->
+    <div class="contentBox" style="min-height:30%;">
+        <div class="contentTile">
+            <div id="logo"></div>
+        </div>
+        <div class="contentTile">
+            <?php switch (@$_GET['status']) {
+                case 1:
+                    echo "<p style='text-align:center;'>u bent uitgelogd.</p>";
+                    break;
+                case 2:
+                    echo "<p style='color:red; font-weight:bold; text-align:center;'>Onjuist gebruikersnaam en/of wachtwoord.</p>";
+                    break;
+                default:
+                    echo "<p style='color:red; font-weight:bold; text-align:center;'>U bent niet ingelogd.</p>";
+                    break;
+            }
+            ?>
+        </div>
+        <div class="contentTile">
+            <h1 class="pageTitle">Inlogscherm</h1>
+        </div>
     </div>
     <div class="contentBox">
         <div class="contentTile20"></div>
