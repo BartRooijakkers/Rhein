@@ -41,7 +41,7 @@ if (@include 'functions.php') {
             <!-- Voorbladen formulier -->
             <ul>
                 <li class="formTile voorbladen">
-                    <label class="voorbladLabel" for="TCVT">TCTV-nummer:</label>
+                    <label class="voorbladLabel" for="TCVT">TCVT-nummer:</label>
                     <input type="number" name="TCVT" placeholder="Vul TCVT nummer in" required></input>
 
                     <label class="voorbladLabel" for="deskundige">Deskundige:</label>
@@ -93,16 +93,20 @@ if (@include 'functions.php') {
                     <input type="number" name="topbaar" placeholder="Vul Topbaar in"></input>
                     <!-- FIX -->
                     <label class="voorbladLabel" for="loopkat">Uitvoering Giek met Loopkat:</label>
-                    <input type="checkbox" name="loopkat" required></input>
+                    Ja<input type="radio" value="1" name="loopkat" style="display: inline; margin-right:4%;" required> Nee<input type="radio" name="loopkat" style="display: inline;" value="0" checked required>
                     <!-- FIX -->
                     <label class="voorbladLabel" for="verstelbare_giek">Uitvoering Giek Verstelbare giek:</label>
-                    <input type="checkbox" name="verstelbare_giek" required></input>
+                    Ja<input type="radio" value="1" name="verstelbare_giek" style="display: inline; margin-right:4%;" required> Nee<input type="radio" name="verstelbare_giek" style="display: inline;" value="0" checked required>
                     <!-- change naar vaste waarden -->
                     <label class="voorbladLabel" for="soort_stempels">Soort stempels:</label>
-                    <input type="number" name="soort_stempels" placeholder="Vul soort stempels in"></input>
+                    <select name="soort_stempels" required>
+                        <option selected disabled hidden>Kies Soort stempels</option>
+                        <option value="1">Stempels</option>
+                        <option value="2">Doozerblad</option>
+                    </select>
 
                     <label class="voorbladLabel" for="tekortkomingen">Tekortkomingen:</label>
-                    <input type="number" name="tekortkomingen" placeholder="Vul tekortkomingen in" required></input>
+                    Ja<input type="radio" value="1" name="tekortkomingen" style="display: inline; margin-right:4%;" required> Nee<input type="radio" name="tekortkomingen" style="display: inline;" value="0" checked required>  
 
                     <label class="voorbladLabel" for="afmelden_voor">Afmelden voor:</label>
                     <input type="date" name="afmelden_voor" placeholder="Vul tekortkomingen in" required></input>

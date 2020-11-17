@@ -31,6 +31,8 @@ function logOut(){
     session_unset();
     session_destroy();
     header('Location:index.php?status=1'); 
+    global $conn;
+    $conn = null;
 }
 
 function logIn(){

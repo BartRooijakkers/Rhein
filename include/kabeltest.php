@@ -13,21 +13,21 @@
         <label class="voorbladLabel" for="beschadiging_buitenzijde">Afslijping van de aan de buitenzijde gelegen draden:</label>
         <select name="beschadiging_buitenzijde">
             <option disabled hidden selected>Selecteer mate van beschadiging</option>
-            <option value="gering" style="background:#89AB0D;">Gering</option>
-            <option value="gemiddeld" style="background:#F7F14A;">Gemiddeld</option>
-            <option value="hoog" style="background:#F9DB22;">Hoog</option>
-            <option value="zeer_hoog" style="background:Orange;">Zeer hoog</option>
-            <option value="afleggen" style="background:red; color:white; font-weight:bold;">Afleggen</option>
+            <option value="1" style="background:#89AB0D;">Gering</option>
+            <option value="2" style="background:#F7F14A;">Gemiddeld</option>
+            <option value="3" style="background:#F9DB22;">Hoog</option>
+            <option value="4" style="background:Orange;">Zeer hoog</option>
+            <option value="5" style="background:red; color:white; font-weight:bold;">Afleggen</option>
         </select>
 
         <label class="voorbladLabel" for="beschadiging_roest_corrosie">Roest en corrosie:</label>
         <select name="beschadiging_roest_corrosie">
             <option disabled hidden selected>Selecteer mate van beschadiging</option>
-            <option value="gering" style="background:#89AB0D;">Gering</option>
-            <option value="gemiddeld" style="background:#F7F14A;">Gemiddeld</option>
-            <option value="hoog" style="background:#F9DB22;">Hoog</option>
-            <option value="zeer_hoog" style="background:Orange;">Zeer hoog</option>
-            <option value="afleggen" style="background:red; color:white; font-weight:bold;">Afleggen</option>
+            <option value="1" style="background:#89AB0D;">Gering</option>
+            <option value="2" style="background:#F7F14A;">Gemiddeld</option>
+            <option value="3" style="background:#F9DB22;">Hoog</option>
+            <option value="4" style="background:Orange;">Zeer hoog</option>
+            <option value="5" style="background:red; color:white; font-weight:bold;">Afleggen</option>
         </select>
 
         <label class="voorbladLabel" for="verminderde_kabeldiameter">Verminderde kabeldiameter in %:</label>
@@ -40,11 +40,11 @@
         <label class="voorbladLabel" for="beschadiging_totaal"> Totale beoordeling:</label>
         <select name="beschadiging_totaal">
             <option disabled hidden selected>Selecteer mate van beschadiging</option>
-            <option value="gering" style="background:#89AB0D;">Gering</option>
-            <option value="gemiddeld" style="background:#F7F14A;">Gemiddeld</option>
-            <option value="hoog" style="background:#F9DB22;">Hoog</option>
-            <option value="zeer_hoog" style="background:Orange;">Zeer hoog</option>
-            <option value="afleggen" style="background:red; color:white; font-weight:bold;">Afleggen</option>
+            <option value="1" style="background:#89AB0D;">Gering</option>
+            <option value="2" style="background:#F7F14A;">Gemiddeld</option>
+            <option value="3" style="background:#F9DB22;">Hoog</option>
+            <option value="4" style="background:Orange;">Zeer hoog</option>
+            <option value="5" style="background:red; color:white; font-weight:bold;">Afleggen</option>
         </select>
 
         <label class="voorbladLabel" for="type_beschadiging_roest"> Beschadiging en roestvorming Type:</label>

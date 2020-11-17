@@ -4,11 +4,13 @@ if (@include 'functions.php') {
     switch ($_GET['type']) {
         case 1:
             $type = "Hijstest";
-            $sql = "SELECT voorbladen.*, hijstesten.*, gebruikers.voor_naam, gebruikers.achter_naam, CAST(voorbladen.keurings_datum AS date) 'keuringsDatum',CAST(voorbladen.afmelden_voor AS date) 'afmeldDatum' ,CAST(hijstesten.datum_opgesteld AS date) 'datumOpgesteld' FROM voorbladen INNER JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer INNER JOIN gebruikers ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE voorbladen.opdracht_nummer = :id;";
+            $includeFile = 'include/hijstestDetails.php';
+            $sql = "SELECT voorbladen.*, hijstesten.*, gebruikers.voor_naam, gebruikers.achter_naam, CAST(voorbladen.keurings_datum AS date) 'keuringsDatum', CAST(voorbladen.keurings_datum AS time) 'keuringsTijd',CAST(voorbladen.afmelden_voor AS date) 'afmeldDatum' ,CAST(hijstesten.datum_opgesteld AS date) 'datumOpgesteld' FROM voorbladen INNER JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer INNER JOIN gebruikers ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE voorbladen.opdracht_nummer = :id;";
             break;
         case 2:
             $type = "Kabeltest";
-            $sql = "SELECT voorbladen.*, kabelchecklisten.*, gebruikers.voor_naam, gebruikers.achter_naam, CAST(voorbladen.keurings_datum AS date) 'keuringsDatum',CAST(voorbladen.afmelden_voor AS date) 'afmeldDatum' FROM voorbladen INNER JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer INNER JOIN gebruikers ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE voorbladen.opdracht_nummer = :id;";
+            $includeFile = 'include/kabeltestDetails.php';
+            $sql = "SELECT voorbladen.*, kabelchecklisten.*, gebruikers.voor_naam, gebruikers.achter_naam, CAST(voorbladen.keurings_datum AS date) 'keuringsDatum', CAST(voorbladen.keurings_datum AS time) 'keuringsTijd' ,CAST(voorbladen.afmelden_voor AS date) 'afmeldDatum' FROM voorbladen INNER JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer INNER JOIN gebruikers ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE voorbladen.opdracht_nummer = :id;";
             break;
         default:
             $type = "Keuring";
@@ -25,6 +27,26 @@ $stmt->execute(['id' => $id]);
 while ($row = $stmt->fetch()) {
     $naam = substr($row->voor_naam, 0, 1) . ". " . $row->achter_naam;
     $data = $row;
+    if($row->verstelbare_giek == 1){
+        $data->verstelbare_giek = "Ja";
+    }else{
+        $data->verstelbare_giek = "Nee";
+    }
+    if($row->loopkat == 1){
+        $data->loopkat = "Ja";
+    }else{
+        $data->loopkat = "Nee";
+    }
+    if($row->tekortkomingen == 1){
+        $data->tekortkomingen = "Ja";
+    }else{
+        $data->tekortkomingen = "Nee";
+    }
+    if($row->soort_stempels == 1){
+        $data->soort_stempels = "Stempels";
+    }else{
+        $data->soort_stempels = "Doozerblad";
+    }
 }
 ?>
 
@@ -59,8 +81,8 @@ while ($row = $stmt->fetch()) {
     <div class="contentBox">
         <div class="contentTileAuto" style="border: 1px solid black; 
     box-shadow: inset 0 0 0 1000px #fff2ccd3;">
+                <h1 style="color:green; padding: 1vw 0 0 0.5vw;">General info</h1>
             <div class="generalInfo">
-                <h1 style="color:green;">General info</h1>
                 <span class="header">Opdracht Nummer:</span>
                 <span><?php echo $data->opdracht_nummer ?></span>
                 <hr>
@@ -69,6 +91,8 @@ while ($row = $stmt->fetch()) {
                 <hr>
                 <span class="header">Keurings datum: </span>
                 <span><?php echo $data->keuringsDatum ?></span>
+                <span class="header">Tijdstip: </span>
+                <span><?php echo $data->keuringsTijd ?></span>
                 <hr>
                 <span class="header">Uitvoerder: </span>
                 <span><?php echo $naam ?></span>
@@ -113,7 +137,7 @@ while ($row = $stmt->fetch()) {
                 <span class="header">Soort Stempels: </span>
                 <span><?php echo $data->soort_stempels ?></span>
                 <hr>
-                <span class="header">Tekortkomingen</span>
+                <span class="header">Tekortkomingen:</span>
                 <span><?php echo $data->tekortkomingen ?></span>
                 <hr>
                 <span class="header">Afmelden voor:</span>
@@ -141,9 +165,7 @@ while ($row = $stmt->fetch()) {
                 <span><?php echo $data->afleg_redenen ?></span>
             </div>
         </div>
-        <div class="contentTileAuto">
-
-        </div>
+        <?php include($includeFile);?>
     </div>
 </body>
 <script>

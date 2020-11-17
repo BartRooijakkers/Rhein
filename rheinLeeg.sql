@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 16 nov 2020 om 23:40
--- Serverversie: 10.4.6-MariaDB
--- PHP-versie: 7.3.9
+-- Gegenereerd op: 17 nov 2020 om 15:58
+-- Serverversie: 10.1.38-MariaDB
+-- PHP-versie: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,7 +59,7 @@ CREATE TABLE `hijstesten` (
   `toelaatbare_bedrijfslast` double(11,2) NOT NULL,
   `lmb_in_werking` double(11,2) NOT NULL,
   `proeflast` double(11,2) NOT NULL,
-  `akkoord` tinyint(1) NOT NULL DEFAULT 0
+  `akkoord` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -103,12 +103,12 @@ CREATE TABLE `voorbladen` (
   `opdracht_nummer` int(11) NOT NULL,
   `TCVT_nummer` int(11) NOT NULL,
   `soort_keuring` int(11) NOT NULL,
-  `keurings_datum` datetime NOT NULL DEFAULT current_timestamp(),
+  `keurings_datum` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `uitvoerder` int(11) NOT NULL,
   `deskundige` varchar(255) NOT NULL,
-  `opstelling_kraan` int(11) NOT NULL,
+  `opstelling_kraan` varchar(52) NOT NULL,
   `uitvoering_toren_haakhoogte` int(11) NOT NULL,
-  `soort_giek` int(11) NOT NULL,
+  `soort_giek` varchar(52) NOT NULL,
   `telescoopgiek_delen` double(11,2) NOT NULL,
   `opbouwgiek_meters` double(11,2) NOT NULL,
   `hulpgiek_meters` double(11,2) NOT NULL,

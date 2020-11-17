@@ -10,7 +10,7 @@ $database = "rhein";
 
 global $conn;
 
-$sql = $conn->query("SELECT hijstesten.*, kabelchecklisten.*, voorbladen.*, gebruikers.voor_naam, gebruikers.achter_naam, DATE_FORMAT(voorbladen.keurings_datum,'%d/%m/%Y') AS keuring_datum FROM voorbladen LEFT JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer
+$sql = $conn->query("SELECT hijstesten.*, kabelchecklisten.*, voorbladen.*, gebruikers.voor_naam, gebruikers.achter_naam, CAST(voorbladen.keurings_datum AS date) keuringsDatum FROM voorbladen LEFT JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer
  LEFT JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer INNER JOIN gebruikers on voorbladen.uitvoerder = gebruikers.gebruiker_ID ORDER BY voorbladen.keurings_datum DESC");
 ?>
 
@@ -28,9 +28,9 @@ $sql = $conn->query("SELECT hijstesten.*, kabelchecklisten.*, voorbladen.*, gebr
         </div>
         <div class="contentTile">
             <?php
-            echo "<p style='text-align:center;'>Welkom <b>" . $_SESSION['naam'] . " " . $_SESSION['achternaam'] . "</b>!</p>"
+            echo "<p style='text-align:center;'>Welkom <b>" . $_SESSION['naam'] . " " . $_SESSION['achternaam'] . "</b>!"
             ?>
-            <br><a href="user.php?action=logout">Uitloggen</a>
+            <br><a href="user.php?action=logout">Uitloggen</a></p>
         </div>
         <div class="contentTile">
             <h1 class="pageTitle">Overzichten</h1>
@@ -80,7 +80,7 @@ $sql = $conn->query("SELECT hijstesten.*, kabelchecklisten.*, voorbladen.*, gebr
             $naam = "<b>" . substr($row->voor_naam, 0, 1) . ". " . $row->achter_naam . "</b>";
 
             echo "<tr class='view' style= 'cursor:pointer;' onclick='location.href=`details.php?type=" . $row->soort_keuring . "&id=" . $row->opdracht_nummer . "`;'><td>"
-             . $row->opdracht_nummer . "</td><td>" . $soort_keuring . "</td><td>" . $referentie_nummer . "</td><td>" . $row->keurings_datum . "</td><td>" . $naam . "</td><td>" . $akkoord . "</td></tr>";
+             . $row->opdracht_nummer . "</td><td>" . $soort_keuring . "</td><td>" . $referentie_nummer . "</td><td>" . $row->keuringsDatum . "</td><td>" . $naam . "</td><td>" . $akkoord . "</td></tr>";
         }
         // if (mysqli_num_rows($result) > 0) {
             // while ($row = mysqli_fetch_assoc($result)) {
