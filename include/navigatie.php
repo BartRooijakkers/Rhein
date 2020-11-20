@@ -8,5 +8,5 @@
                         echo"";
                     }
                 ?>
-                <a class="route" href="index.php"></a>
+                <a class="route" href="index.php">Zoeken</a>
             </div>

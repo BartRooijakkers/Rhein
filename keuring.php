@@ -99,7 +99,7 @@ if (@include 'functions.php') {
                     Ja<input type="radio" value="1" name="verstelbare_giek" style="display: inline; margin-right:4%;" required> Nee<input type="radio" name="verstelbare_giek" style="display: inline;" value="0" checked required>
                     <!-- change naar vaste waarden -->
                     <label class="voorbladLabel" for="soort_stempels">Soort stempels:</label>
-                    <select name="soort_stempels" required>
+                    <select name="soort_stempels">
                         <option selected disabled hidden>Kies Soort stempels</option>
                         <option value="1">Stempels</option>
                         <option value="2">Doozerblad</option>

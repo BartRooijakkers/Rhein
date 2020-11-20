@@ -3,12 +3,6 @@ if (@include 'functions.php') {
 } else {
     echo "error";
 }
-$hostName = "localhost";
-$username = "root";
-$password = "";
-$database = "rhein";
-
-global $conn;
 
 $sql = $conn->query("SELECT hijstesten.*, kabelchecklisten.*, voorbladen.*, gebruikers.voor_naam, gebruikers.achter_naam, CAST(voorbladen.keurings_datum AS date) keuringsDatum FROM voorbladen LEFT JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer
  LEFT JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer INNER JOIN gebruikers on voorbladen.uitvoerder = gebruikers.gebruiker_ID ORDER BY voorbladen.keurings_datum DESC");

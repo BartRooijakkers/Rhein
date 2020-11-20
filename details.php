@@ -86,12 +86,12 @@ while ($row = $stmt->fetch()) {
                 <span class="header">Opdracht Nummer:</span>
                 <span><?php echo $data->opdracht_nummer ?></span>
                 <hr>
-                <span class="header">TCVT Nummer:</span>
+                <span class="header">TCVT Nummer: </span>
                 <spam><?php echo $data->TCVT_nummer ?></spam>
                 <hr>
                 <span class="header">Keurings datum: </span>
                 <span><?php echo $data->keuringsDatum ?></span>
-                <span class="header">Tijdstip: </span>
+                <span class="header"> Tijdstip: </span>
                 <span><?php echo $data->keuringsTijd ?></span>
                 <hr>
                 <span class="header">Uitvoerder: </span>
@@ -106,10 +106,10 @@ while ($row = $stmt->fetch()) {
                 <span class="header">Uitvoering toren haakhoogte: </span>
                 <span><?php echo $data->uitvoering_toren_haakhoogte ?></span>
                 <hr>
-                <span class="header">Soort giek:</span>
+                <span class="header">Soort giek: </span>
                 <span><?php echo $data->soort_giek ?></span>
                 <hr>
-                <span class="header">Telescoopgiek Delen:</span>
+                <span class="header">Telescoopgiek Delen: </span>
                 <span><?php echo $data->telescoopgiek_delen ?></span>
                 <hr>
                 <span class="header">Opbouwgiek Meters: </span>
@@ -121,7 +121,7 @@ while ($row = $stmt->fetch()) {
                 <span class="header">Fly-jib delen: </span>
                 <span><?php echo $data->fly_jib_delen ?></span>
                 <hr>
-                <span class="header">Giek Lengte:</span>
+                <span class="header">Giek Lengte: </span>
                 <span><?php echo $data->gieklengte ?></span>
             </div>
             <div class="generalInfo">
@@ -131,16 +131,16 @@ while ($row = $stmt->fetch()) {
                 <span class="header">Loopkat: </span>
                 <span><?php echo $data->loopkat ?></span>
                 <hr>
-                <span class="header">Verstelbare giek:</span>
+                <span class="header">Verstelbare giek: </span>
                 <span><?php echo $data->verstelbare_giek ?></span>
                 <hr>
                 <span class="header">Soort Stempels: </span>
                 <span><?php echo $data->soort_stempels ?></span>
                 <hr>
-                <span class="header">Tekortkomingen:</span>
+                <span class="header">Tekortkomingen: </span>
                 <span><?php echo $data->tekortkomingen ?></span>
                 <hr>
-                <span class="header">Afmelden voor:</span>
+                <span class="header">Afmelden voor: </span>
                 <span><?php echo $data->afmeldDatum ?></span>
                 <hr>
                 <span class="header">Toelichting: </span>
@@ -155,7 +155,7 @@ while ($row = $stmt->fetch()) {
                 <span class="header">Waarnemingen: </span>
                 <span><?php echo $data->waarnemingen ?></span>
                 <hr>
-                <span class="header">Handtekening:</span>
+                <span class="header">Handtekening: </span>
                 <span><?php echo $data->handtekening ?></span>
                 <hr>
                 <span class="header">Aantal bedrijfsuren: </span>

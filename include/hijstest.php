@@ -42,7 +42,6 @@
         <input type="number" name="proeflast" placeholder="Vul Proeflast in"></input>
 
         <label class="voorbladLabel" for="akkoord">Akkoord:</label>
-        <input type="checkbox" name="akkoord" value="1" placeholder="Akkoord"></input>
-
+        Ja<input type="radio" value="1" name="akkoord" style="display: inline; margin-right:4%;" required> Nee<input type="radio" name="akkoord" style="display: inline;" value="0" checked required>
     </li>
 </ul>
