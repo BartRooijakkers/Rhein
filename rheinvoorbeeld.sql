@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 10 nov 2020 om 01:36
+-- Gegenereerd op: 20 nov 2020 om 12:31
 -- Serverversie: 10.4.6-MariaDB
 -- PHP-versie: 7.3.9
 
@@ -43,8 +43,8 @@ CREATE TABLE `gebruikers` (
 --
 
 INSERT INTO `gebruikers` (`gebruiker_ID`, `voor_naam`, `achter_naam`, `tussenvoegsel`, `username`, `password`, `afdeling`) VALUES
-(1, 'Bart', 'Rooijakkers', NULL, 'bart.ar', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 1),
-(2, 'Admin', 'istrator', NULL, 'admin', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 12);
+(1, 'Bart', 'Rooijakkers', NULL, 'Bart.ar', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 12),
+(2, 'Kas', 'van Zanten', NULL, 'KasVZ', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 1);
 
 -- --------------------------------------------------------
 
@@ -75,8 +75,8 @@ CREATE TABLE `hijstesten` (
 --
 
 INSERT INTO `hijstesten` (`opdracht_nummer`, `volg_nummer`, `datum_opgesteld`, `hoofdgiek_lengte`, `mech_sectie_gieklengte`, `hulpgiek_lengte`, `hoofdgiek_giekhoek`, `hulpgiek_giekhoek`, `hijskabel_aantal_parten`, `zwenkhoek`, `eigen_massa_ballast`, `toelaatbare_bedrijfslast`, `lmb_in_werking`, `proeflast`, `akkoord`) VALUES
-(15, 70, '2020-11-19 00:00:00', 4.00, 111.00, 222.00, 3131.00, 1313.00, 13123, 12312.00, 123123.00, 132123.00, 12312.00, 3213.00, 0),
-(16, 2131321, '2020-11-19 00:00:00', 12313.00, 12312312.00, 312312.00, 3123123.00, 213123.00, 2132, 13123.00, 12312.00, 21312.00, 21312.00, 31231.00, 1);
+(1, 66, '2020-11-06 00:00:00', 5.00, 4.00, 8.00, 6.00, 4.00, 2, 44.00, 6.00, 2222.00, 5.00, 44.00, 1),
+(3, 669, '2020-11-18 00:00:00', 55.00, 5.00, 6.00, 8.00, 7.00, 5, 14.00, 8.00, 5.00, 4.00, 55.00, 0);
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE `kabelchecklisten` (
   `kabel_ID` int(11) NOT NULL,
   `draadbreuk_6D` int(11) NOT NULL,
   `draadbreuk_30D` int(11) NOT NULL,
-  `beschadiging_buitzenzijde` int(11) NOT NULL,
+  `beschadiging_buitenzijde` int(11) NOT NULL,
   `beschadiging_roest_corrosie` int(11) NOT NULL,
   `verminderde_kabeldiameter` int(11) NOT NULL,
   `positie_meetpunten` int(11) NOT NULL,
@@ -101,8 +101,8 @@ CREATE TABLE `kabelchecklisten` (
 -- Gegevens worden geëxporteerd voor tabel `kabelchecklisten`
 --
 
-INSERT INTO `kabelchecklisten` (`opdracht_nummer`, `kabel_ID`, `draadbreuk_6D`, `draadbreuk_30D`, `beschadiging_buitzenzijde`, `beschadiging_roest_corrosie`, `verminderde_kabeldiameter`, `positie_meetpunten`, `beschadiging_totaal`, `type_beschadiging_roest`) VALUES
-(17, 9, 5, 5, 5, 5, 5, 5, 5, 5);
+INSERT INTO `kabelchecklisten` (`opdracht_nummer`, `kabel_ID`, `draadbreuk_6D`, `draadbreuk_30D`, `beschadiging_buitenzijde`, `beschadiging_roest_corrosie`, `verminderde_kabeldiameter`, `positie_meetpunten`, `beschadiging_totaal`, `type_beschadiging_roest`) VALUES
+(2, 6, 5, 5, 3, 4, 5, 44, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -115,13 +115,6 @@ CREATE TABLE `keuringsitems` (
   `keurings_onderdeel` int(11) NOT NULL,
   `directe_voorziening` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Gegevens worden geëxporteerd voor tabel `keuringsitems`
---
-
-INSERT INTO `keuringsitems` (`opdracht_nummer`, `keurings_onderdeel`, `directe_voorziening`) VALUES
-(1, 28, 4);
 
 -- --------------------------------------------------------
 
@@ -136,9 +129,9 @@ CREATE TABLE `voorbladen` (
   `keurings_datum` datetime NOT NULL DEFAULT current_timestamp(),
   `uitvoerder` int(11) NOT NULL,
   `deskundige` varchar(255) NOT NULL,
-  `opstelling_kraan` int(11) NOT NULL,
+  `opstelling_kraan` varchar(52) NOT NULL,
   `uitvoering_toren_haakhoogte` int(11) NOT NULL,
-  `soort_giek` int(11) NOT NULL,
+  `soort_giek` varchar(52) NOT NULL,
   `telescoopgiek_delen` double(11,2) NOT NULL,
   `opbouwgiek_meters` double(11,2) NOT NULL,
   `hulpgiek_meters` double(11,2) NOT NULL,
@@ -164,9 +157,9 @@ CREATE TABLE `voorbladen` (
 --
 
 INSERT INTO `voorbladen` (`opdracht_nummer`, `TCVT_nummer`, `soort_keuring`, `keurings_datum`, `uitvoerder`, `deskundige`, `opstelling_kraan`, `uitvoering_toren_haakhoogte`, `soort_giek`, `telescoopgiek_delen`, `opbouwgiek_meters`, `hulpgiek_meters`, `fly_jib_delen`, `gieklengte`, `topbaar`, `loopkat`, `verstelbare_giek`, `soort_stempels`, `tekortkomingen`, `afmelden_voor`, `toelichting`, `werk_instructie`, `kabel_leverancier`, `waarnemingen`, `handtekening`, `aantal_bedrijfsuren`, `afleg_redenen`) VALUES
-(15, 80, 1, '2020-11-07 00:00:00', 1, 'Thomas', 0, 80, 0, 4.00, 1.00, 3.00, 43, 21.00, 22.00, 0, 0, 8, 13, '2020-11-13 00:00:00', 'Hoertje', 'Hoertje', 'Hoertje', 'Hoertje', 'Hoertje', 11.00, 'Hoertje'),
-(16, 11221, 1, '2020-11-07 00:00:00', 1, '231231', 0, 123123, 0, 123123.00, 12312.00, 3123123.00, 123123, 123123.00, 213123.00, 0, 0, 3123123, 127, '2020-11-27 00:00:00', '123123', '123123', '213213', '3123', '12312', 2313.00, '123'),
-(17, 77, 2, '2020-11-10 01:26:20', 1, 'Thom', 122, 333, 12, 4.00, 4.00, 4.00, 4, 4.00, 4.00, 8, 8, 88, 8, '2020-10-21 00:00:00', 'ssadsd', 'sdasdsa', 'dasdasd', 'sadsad', 'asdsadsa', 11.00, 'sadasd');
+(1, 99, 1, '2020-11-18 17:39:56', 1, 'Jeff', 'Stationair', 8, 'Hulp giek', 6.00, 3.00, 4.00, 88, 6.00, 4.00, 1, 0, 2, 1, '2020-11-26 00:00:00', 'Is goede kraan', 'Testen!', 'Technische Unie', 'Stukk', 'BR', 5.00, 'Ohno'),
+(2, 88, 2, '2020-11-18 17:41:58', 1, 'Thomas', 'Railstellen', 77, 'Fly-jib', 5.00, 4.00, 3.00, 88, 4.00, 5.00, 1, 1, 1, 0, '2021-11-18 00:00:00', 'Helemaal in orde', 'Test de kabel', 'BMN', 'Kabel is in wel oke', 'BR', 7.00, 'Test opnieuw'),
+(3, 9, 1, '2020-11-18 17:57:07', 2, 'Tom', 'Vrijstaand', 5, 'Hulp giek', 44.00, 5.00, 2.00, 8, 6.00, 8.00, 1, 1, 2, 1, '2020-12-05 00:00:00', 'Testtt', 'Werken!', 'Technische Unie', 'Boi', 'BR', 5.00, '55');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -204,13 +197,13 @@ ALTER TABLE `voorbladen`
 -- AUTO_INCREMENT voor een tabel `gebruikers`
 --
 ALTER TABLE `gebruikers`
-  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT voor een tabel `voorbladen`
 --
 ALTER TABLE `voorbladen`
-  MODIFY `opdracht_nummer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `opdracht_nummer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
