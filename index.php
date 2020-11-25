@@ -48,6 +48,7 @@ if (!isset($_SESSION['userID'])) {
                     <label>Wachtwoord: </label>
                     <input type="password" name="password" placeholder="Vul uw wachtwoord in"></input>
                     <button>Login</button>
+                    <p><a href=''>Wachtwoord vergeten?</a></p>
                 </form>
             </div>
         </div>

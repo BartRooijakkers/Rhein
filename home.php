@@ -8,7 +8,7 @@ if(@$_GET['status'] == 1){
 }
 ?>
 
-<html style="background:url(images/background.jpeg);">
+<html>
 
 <head>
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">

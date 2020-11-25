@@ -7,7 +7,7 @@ if (@include 'functions.php') {
 } else {
     echo "error";
 }
-if(@$_GET['userAdded'] == 1){
+if (@$_GET['userAdded'] == 1) {
     echo "user Added!";
 }
 ?>
@@ -40,7 +40,10 @@ if(@$_GET['userAdded'] == 1){
         </div>
     </div>
     <div class="contentBox">
-        <div class="contentTile">
+        <div class="contentTile20">
+        </div>
+        <div class="contentTile20"></div>
+        <div class="contentTile20">
             <form class="addUser" action="user.php?action=addUser" method="POST">
                 <label for="username">Gebruikersnaam*:</label>
                 <input type="text" name="username" required></input>

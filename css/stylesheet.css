@@ -1,6 +1,6 @@
 html{
-    background:url(../images/background.jpeg);
-    box-shadow: inset 0 0 0 1000px #fff2ccb6;
+    background: url(../images/background.jpeg);
+    box-shadow: inset 0 0 0 1000px #ffffffc7;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /* Inlog formulier*/
@@ -38,7 +38,7 @@ form button:hover{
     min-width:100%;
     width:auto;
     height:auto;
-    box-shadow: inset 0 0 0 1000px #fff2ccdc;
+    box-shadow: inset 0 0 0 1000px #F5A913;
     border-radius: 5px;
     padding:5%;
 }
@@ -50,8 +50,19 @@ form button:hover{
     max-width:100%;
 }
 
+.login form label{
+    color:#ffffff;
+    font-size: 1.1vw;
+}
+
+form.adduser {
+    box-shadow: inset 0 0 0 1000px #F5A913;
+    border-radius: 5px;
+}
 form.addUser button{
     margin-top:1.5%;
+    margin-bottom:0.5%;
+    width:100%;
 }
 
 form.keuring label{
@@ -108,6 +119,7 @@ ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
+    background: #c5c3c3;
 }
 ul li{
     display: inline;
@@ -135,9 +147,11 @@ ul li{
     margin-right:3%;
     border: 2px solid black;
     border-radius: 12px;
+    background: #F0C760;
 }
 .option:hover{
     border: 2px solid white;
+    box-shadow: inset 0 0 0 1000px #f5f4f41f;
 }
 .choices{
     width:45%;
@@ -145,32 +159,38 @@ ul li{
 }
 
 #kabeltest{
-    background: url(../images/kabeltest.png);
+    background: url(../images/kabeltest.png),
+    #F5A913;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 #kabeltest:hover {
-    background: url(../images/kabeltestActief.png);
+    background: url(../images/kabeltest.png),
+    #F0C760;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 #hijstest {
-    background:url(../images/hijstest.png);
+    background:url(../images/hijstest.png),
+    #F5A913;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 #hijstest:hover{
-    background: url(../images/hijstestActief.png);
+    background:url(../images/hijstest.png),
+    #F0C760;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 #gebruikerToevoegen{
-    background: url(../images/gebruikerToevoegen.png);
+    background: url(../images/gebruikerToevoegen.png),
+    #F5A913;
     background-repeat: no-repeat;
     background-size: 100%;
 }
 #gebruikerToevoegen:hover {
-    background: url(../images/gebruikerToevoegenActief.png);
+    background: url(../images/gebruikerToevoegenActief.png),
+    #F0C760;
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -232,16 +252,17 @@ ul li{
 
  /* Navigatie */
  #nav .route{
-     color:black;
-     background-color: azure;
+     color:#ffffff;
+     font-weight: bold;
+     background:#F6AE2D;
      text-decoration: none;
      border: 1px solid black;
      padding:1%;
      margin-right:0.1%;
  }
- #nav .route:hover{
-     color:black;
-     background-color: rgb(171, 243, 219);
+ #nav .route:hover {
+     color: #4B5358;
+     background-color: #FAD389;
  }
 
  /* Overzichten */
@@ -250,25 +271,25 @@ ul li{
      border:1px solid black;
  }
 table tr:nth-child(even){
-    background-color: #d5f4e6;
+    background-color: #959ab3;
 }
 table tr:nth-child(odd) {
-    background-color:#80ced6;
+    background-color:#9C7A97;
 }
 table tr:first-of-type{
-    background-color: black;
+    background-color: #00272B;
     color:white;
     font-weight: bold;
     cursor: default;
 }
 table tr.legenda{
-    background-color: black;
+    background-color: #00272B;
     color:white;
     font-weight: bold;
     cursor: default;
 }
 table tr.view:hover{
-    background-color:rgba(99, 99, 250, 0.527);
+    box-shadow: inset 0 0 0 1000px #1e398857;
 }
  table th{
     border: 1px solid black;
