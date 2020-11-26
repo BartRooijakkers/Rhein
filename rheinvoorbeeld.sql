@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 20 nov 2020 om 12:31
+-- Gegenereerd op: 26 nov 2020 om 15:06
 -- Serverversie: 10.4.6-MariaDB
 -- PHP-versie: 7.3.9
 
@@ -25,6 +25,29 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tabelstructuur voor tabel `afdelingen`
+--
+
+CREATE TABLE `afdelingen` (
+  `afdeling_ID` int(11) NOT NULL,
+  `afdeling_naam` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `afdelingen`
+--
+
+INSERT INTO `afdelingen` (`afdeling_ID`, `afdeling_naam`) VALUES
+(1, 'Veiligheid en milieu'),
+(2, 'Materieel'),
+(3, 'Projectbureau'),
+(4, 'Engineering'),
+(5, 'Verkoop'),
+(12, 'ICT');
+
+-- --------------------------------------------------------
+
+--
 -- Tabelstructuur voor tabel `gebruikers`
 --
 
@@ -35,16 +58,18 @@ CREATE TABLE `gebruikers` (
   `tussenvoegsel` varchar(255) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL DEFAULT '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248',
-  `afdeling` int(11) NOT NULL
+  `afdeling` int(11) NOT NULL,
+  `account_status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `gebruikers`
 --
 
-INSERT INTO `gebruikers` (`gebruiker_ID`, `voor_naam`, `achter_naam`, `tussenvoegsel`, `username`, `password`, `afdeling`) VALUES
-(1, 'Bart', 'Rooijakkers', NULL, 'Bart.ar', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 12),
-(2, 'Kas', 'van Zanten', NULL, 'KasVZ', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 1);
+INSERT INTO `gebruikers` (`gebruiker_ID`, `voor_naam`, `achter_naam`, `tussenvoegsel`, `username`, `password`, `afdeling`, `account_status`) VALUES
+(1, 'Bart', 'Rooijakkers', NULL, 'Bart.ar', '$2y$10$D3MGAq6k1OZsbzbhH7jruuTRzcbhTa0I.skKUS6GxPUT5Y0QuGGOa', 12, 1),
+(2, 'Kas', 'van Zanten', NULL, 'KasVZ', '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248', 1, 1),
+(5, '33', '55', NULL, 'test', '$2y$10$5k9bUVBTgfCYEXUSuuCuFO/QAVkiQycesCwuPlzMyBT6uxO8gqS1G', 12, 0);
 
 -- --------------------------------------------------------
 
@@ -166,6 +191,12 @@ INSERT INTO `voorbladen` (`opdracht_nummer`, `TCVT_nummer`, `soort_keuring`, `ke
 --
 
 --
+-- Indexen voor tabel `afdelingen`
+--
+ALTER TABLE `afdelingen`
+  ADD PRIMARY KEY (`afdeling_ID`);
+
+--
 -- Indexen voor tabel `gebruikers`
 --
 ALTER TABLE `gebruikers`
@@ -194,10 +225,16 @@ ALTER TABLE `voorbladen`
 --
 
 --
+-- AUTO_INCREMENT voor een tabel `afdelingen`
+--
+ALTER TABLE `afdelingen`
+  MODIFY `afdeling_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT voor een tabel `gebruikers`
 --
 ALTER TABLE `gebruikers`
-  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT voor een tabel `voorbladen`

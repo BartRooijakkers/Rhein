@@ -37,7 +37,8 @@ if (@include 'functions.php') {
     </div>
     <div class="contentBox">
         <div class="choices">
-            <a href="addUser.php"><div class="option" id="gebruikerToevoegen"></div></a>
+            <a href="userList.php"><div class="option" id="userList"></div></a>
+            <a href="userRequests.php"><div class="option" id="gebruikerToevoegen"></div></a>
         </div>
     </div>
     <div class="contentBox"></div>

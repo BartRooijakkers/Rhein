@@ -295,14 +295,8 @@ table tr.view:hover{
     border: 1px solid black;
  }
  table td {
-     border: 1px solid black;
+     border: none;
  }
- table.details td:nth-child(odd){
-     background-color:#80ced6;
- }
-  table.details td:nth-child(even) {
-      background-color: #d5f4e6;
-  }
 
   span.header{
       font-weight: Bold;

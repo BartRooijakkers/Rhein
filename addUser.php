@@ -1,16 +1,3 @@
-<?php
-if (@include 'functions.php') {
-    if ($_SESSION['afdeling'] != 12) {
-        echo "<script> alert('U beschikt niet over admin rechten');</script>";
-        header('Location:home.php');
-    }
-} else {
-    echo "error";
-}
-if (@$_GET['userAdded'] == 1) {
-    echo "user Added!";
-}
-?>
 
 <html>
 

@@ -27,6 +27,9 @@ if (!isset($_SESSION['userID'])) {
                 case 2:
                     echo "<p style='color:red; font-weight:bold; text-align:center;'>Onjuist gebruikersnaam en/of wachtwoord.</p>";
                     break;
+                case 3:
+                    echo "<p style='color:red; font-weight:bold; text-align:center;'>Deze inloggegevens zijn niet bekend bij ons.</p>";
+                    break;
                 default:
                     echo "<p style='color:red; font-weight:bold; text-align:center;'>U bent niet ingelogd.</p>";
                     break;
@@ -49,6 +52,7 @@ if (!isset($_SESSION['userID'])) {
                     <input type="password" name="password" placeholder="Vul uw wachtwoord in"></input>
                     <button>Login</button>
                     <p><a href=''>Wachtwoord vergeten?</a></p>
+                    <p><a href=''>Account aanvragen</a></p>
                 </form>
             </div>
         </div>
