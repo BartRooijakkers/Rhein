@@ -48,7 +48,7 @@ function logIn(){
 
     if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch()) {
-            if (password_verify($input_password, $row->password)) {
+            if (password_verify($input_password, $row->password) && $row->account_status == 1) {
                 unset($row->password);
                 session_start();
                 $_SESSION['userID'] = $row->gebruiker_ID;

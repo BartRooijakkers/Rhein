@@ -303,3 +303,23 @@ table tr.view:hover{
       color:black;
   }
 
+table.requests a.button {
+       border: 1px solid black;
+       padding:1%;
+       width:auto;
+       text-decoration: none;
+  }
+  table.requests a.button.green{
+      background:rgb(7, 99, 7);
+      color:white;
+  }
+  table.requests a.button.green:hover{
+      background:green;
+  }
+table.requests a.button.red{
+    background: rgb(175, 18, 18);
+    color:black;
+}
+table.requests a.button.red:hover{
+    background: red;
+}

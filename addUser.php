@@ -1,3 +1,17 @@
+<?php
+switch (@$_GET['userAdded']) {
+    case 1:
+        echo "<script>alert('Account aangevraagd! Uw aanvraag wordt in behandeling genomen.')</script>";
+        break;
+    case 2:
+        echo "<script>alert('Helaas! deze gebruikersnaam is in gebruik.')</script>";
+        break;
+    
+    default:
+        //Niks
+        break;
+}
+?>
 
 <html>
 
@@ -12,18 +26,17 @@
             <div id="logo"></div>
         </div>
         <div class="contentTile">
-            <?php
-            echo "<p style='text-align:center;'>Welkom <b>" . $_SESSION['naam'] . " " . $_SESSION['achternaam'] . "</b>!"
-            ?>
-            <br><a href="user.php?action=logout">Uitloggen</a>
+
         </div>
         <div class="contentTile">
-            <h1 class="pageTitle">Gebruiker Toevoegen</h1>
+            <h1 class="pageTitle">Account aanvragen</h1>
         </div>
     </div>
     <div class="contentBox">
         <div class="contentTile">
-            <?php include("include/navigatie.php"); ?>
+            <div id="nav">
+                <a class="route" href="index.php">Terug</a>
+            </div>
         </div>
     </div>
     <div class="contentBox">
@@ -32,14 +45,26 @@
         <div class="contentTile20"></div>
         <div class="contentTile20">
             <form class="addUser" action="user.php?action=addUser" method="POST">
-                <label for="username">Gebruikersnaam*:</label>
-                <input type="text" name="username" required></input>
-                <label for="username">Voornaam*:</label>
-                <input type="text" name="voornaam" required></input>
-                <label for="username">Tussenvoegsel:</label>
-                <input type="text" name="tussenvoegsel"></input>
-                <label for="username">Achternaam*:</label>
-                <input type="text" name="achternaam" required></input>
+                <label for="username">Gebruikersnaam:</label>
+                <input type="text" name="username" required> </input>
+                <label for="password">Wachtwoord:</label>
+                <input type="password" name="password" required></input>
+                <label for="firstname">Voornaam:</label>
+                <input type="text" name="firstname" required> </input>
+                <label for="middlename">Tussenvoegsel:</label>
+                <input type="text" name="middlename"> </input>
+                <label for="lastname">Achternaam: </label>
+                <input type="text" name="lastname" required> </input>
+                <label for="division">Afdeling:</label>
+                <select name="division" id="" required>
+                    <option selected disabled hidden>Kies een afdeling</option>
+                    <option value="1">Veiligheid en milieu</option>
+                    <option value="2">Materieel</option>
+                    <option value="3">Projectbureau</option>
+                    <option value="4">Engineering</option>
+                    <option value="5">Verkoop</option>
+                    <option value="12">ICT</option>
+                </select>
 
                 <button>Toevoegen</button>
             </form>

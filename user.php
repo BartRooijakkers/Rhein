@@ -11,12 +11,31 @@ switch ($_GET['action']) {
         logIn();
         break;
     case 'addUser':
-        if (empty($_POST['tussenvoegsel'])) {
-            insertUser($_POST['username'],$_POST['voornaam'],$_POST['achternaam'], NULL);
+        $input_username = $_POST['username'];
+        $input_password = $_POST['password'];
+        $input_firstname = $_POST['firstname'];
+        $input_lastname = $_POST['lastname'];
+        $input_division = $_POST['division'];
+
+        if (empty($input_middlename = $_POST['middlename'])) {
+            $input_middlename = null;
         } else {
-            insertUser($_POST['username'],$_POST['voornaam'],$_POST['achternaam'], $_POST['tussenvoegsel']);
+            $input_middlename = $input_middlename;
         }
-        header("location:addUser.php?userAdded=1");
+
+        $password = password_hash($input_password, PASSWORD_DEFAULT);
+
+        $usercheck = "SELECT username FROM gebruikers WHERE username = :username";
+        $statement = $conn->prepare($usercheck);
+        $statement->execute(['username' => $input_username]);
+        if ($statement->rowCount() > 0) {
+            header("location:addUser.php?userAdded=2");
+        } else {
+            $sql = "INSERT INTO gebruikers(`voor_naam`,`achter_naam`,`tussenvoegsel`,`username`,`password`,`afdeling`) VALUES(:voor_naam,:achter_naam,:tussenvoegsel,:username,:pass,:afdeling);";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute(['voor_naam' => $input_firstname, 'achter_naam' => $input_lastname, 'tussenvoegsel' => $input_middlename, 'username' => $input_username, 'pass' => $password, 'afdeling' => $input_division]);
+            header("location:addUser.php?userAdded=1");
+        }
         break;
     case 'keuring':
         if($_POST['typeOfTest'] == "hijstest"){
@@ -103,7 +122,6 @@ switch ($_GET['action']) {
                     header("location:home.php?status=1");
                     }else{
                     print_r($params);
-                    print_r($stmt->errorInfo());
                     }
                     /* Als query gelukt is redirect naar mijnincidenten */
                     header("location:home.php?status=1");
