@@ -105,13 +105,14 @@ INNER JOIN afdelingen ON gebruikers.afdeling = afdelingen.afdeling_ID WHERE gebr
                 </tr>";
                 while ($row = $sql_requests->fetch()) {
                     echo "<tr><td>{$row->voor_naam}</td><td>{$row->tussenvoegsel}</td><td>{$row->achter_naam}</td><td>{$row->username}</td><td>{$row->afdeling_naam}</td>
-                    <td><a class='button green' href='admin.php?request_status=1&id={$row->gebruiker_ID}'>Accept</a> <a class='button red' href='admin.php?request_status=2&id={$row->gebruiker_ID}'>Deny</a></td></tr></table>";
+                    <td><a class='button green' href='admin.php?request_status=1&id={$row->gebruiker_ID}'>Accept</a> <a class='button red' href='admin.php?request_status=2&id={$row->gebruiker_ID}'>Deny</a></td></tr>";
                 }
             }else{
                 echo "<br><h3>Geen account verzoeken op dit moment</h3>";
             }
                     
                 ?>
+                </table>
         </div>
     </div>
 </body>

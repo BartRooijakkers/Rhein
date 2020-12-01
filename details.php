@@ -5,12 +5,12 @@ if (@include 'functions.php') {
         case 1:
             $type = "Hijstest";
             $includeFile = 'include/hijstestDetails.php';
-            $sql = "SELECT voorbladen.*, hijstesten.*, gebruikers.voor_naam, gebruikers.achter_naam, CAST(voorbladen.keurings_datum AS date) 'keuringsDatum', CAST(voorbladen.keurings_datum AS time) 'keuringsTijd',CAST(voorbladen.afmelden_voor AS date) 'afmeldDatum' ,CAST(hijstesten.datum_opgesteld AS date) 'datumOpgesteld' FROM voorbladen INNER JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer INNER JOIN gebruikers ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE voorbladen.opdracht_nummer = :id;";
+            $sql = "SELECT voorbladen.*, hijstesten.*, gebruikers.voor_naam, gebruikers.achter_naam, DATE_FORMAT(voorbladen.keurings_datum,'%d-%m-%Y') 'keuringsDatum' , CAST(voorbladen.keurings_datum AS time) 'keuringsTijd',CAST(voorbladen.afmelden_voor AS date) 'afmeldDatum' ,DATE_FORMAT(hijstesten.datum_opgesteld,'%d-%m-%Y') 'datumOpgesteld' FROM voorbladen INNER JOIN hijstesten ON voorbladen.opdracht_nummer = hijstesten.opdracht_nummer INNER JOIN gebruikers ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE voorbladen.opdracht_nummer = :id;";
             break;
         case 2:
             $type = "Kabeltest";
             $includeFile = 'include/kabeltestDetails.php';
-            $sql = "SELECT voorbladen.*, kabelchecklisten.*, gebruikers.voor_naam, gebruikers.achter_naam, CAST(voorbladen.keurings_datum AS date) 'keuringsDatum', CAST(voorbladen.keurings_datum AS time) 'keuringsTijd' ,CAST(voorbladen.afmelden_voor AS date) 'afmeldDatum' FROM voorbladen INNER JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer INNER JOIN gebruikers ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE voorbladen.opdracht_nummer = :id;";
+            $sql = "SELECT voorbladen.*, kabelchecklisten.*, gebruikers.voor_naam, gebruikers.achter_naam, DATE_FORMAT(voorbladen.keurings_datum,'%d-%m-%Y') 'keuringsDatum' , CAST(voorbladen.keurings_datum AS time) 'keuringsTijd' ,CAST(voorbladen.afmelden_voor AS date) 'afmeldDatum' FROM voorbladen INNER JOIN kabelchecklisten ON voorbladen.opdracht_nummer = kabelchecklisten.opdracht_nummer INNER JOIN gebruikers ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE voorbladen.opdracht_nummer = :id;";
             break;
         default:
             $type = "Keuring";
