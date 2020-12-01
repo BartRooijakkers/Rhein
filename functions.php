@@ -56,7 +56,8 @@ function logIn(){
                 $_SESSION['naam'] = $row->voor_naam;
                 $_SESSION['achternaam'] = $row->achter_naam;
                 $_SESSION['afdeling'] = $row->afdeling;
-                
+                $update_last_login = $conn->prepare("UPDATE gebruikers SET last_login = CURRENT_TIMESTAMP WHERE gebruiker_ID = :userID");
+                $update_last_login->execute(['userID'=>$row->gebruiker_ID]);
             } else {
                 header('Location:index.php?status=2');
                 return;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 26 nov 2020 om 15:05
--- Serverversie: 10.4.6-MariaDB
--- PHP-versie: 7.3.9
+-- Gegenereerd op: 01 dec 2020 om 14:08
+-- Serverversie: 10.1.38-MariaDB
+-- PHP-versie: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,8 +47,18 @@ CREATE TABLE `gebruikers` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL DEFAULT '874e0cc1eb15bdaf323800180d19d69fe4ba2cedd2954ab332e25a2a85ab3248',
   `afdeling` int(11) NOT NULL,
-  `account_status` int(11) NOT NULL DEFAULT 0
+  `account_status` int(11) NOT NULL DEFAULT '0',
+  `last_login` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `gebruikers`
+--
+
+INSERT INTO `gebruikers` (`gebruiker_ID`, `voor_naam`, `achter_naam`, `tussenvoegsel`, `username`, `password`, `afdeling`, `account_status`, `last_login`) VALUES
+(1, 'Bart', 'Rooijakkers', NULL, 'Bart.ar', '$2y$10$D3MGAq6k1OZsbzbhH7jruuTRzcbhTa0I.skKUS6GxPUT5Y0QuGGOa', 12, 1, '2020-12-01 12:59:33'),
+(5, '33', '55', NULL, 'test', '$2y$10$5k9bUVBTgfCYEXUSuuCuFO/QAVkiQycesCwuPlzMyBT6uxO8gqS1G', 12, 1, NULL),
+(7, 'Kas', 'van Zanten', NULL, 'KasVZ', '$2y$10$PvHcC5YrZ//RjylXM.e8muHfJRS5yytevSRkcaM/XA8wNcjEqhOrG', 3, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -71,7 +81,7 @@ CREATE TABLE `hijstesten` (
   `toelaatbare_bedrijfslast` double(11,2) NOT NULL,
   `lmb_in_werking` double(11,2) NOT NULL,
   `proeflast` double(11,2) NOT NULL,
-  `akkoord` tinyint(1) NOT NULL DEFAULT 0
+  `akkoord` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,7 +125,7 @@ CREATE TABLE `voorbladen` (
   `opdracht_nummer` int(11) NOT NULL,
   `TCVT_nummer` int(11) NOT NULL,
   `soort_keuring` int(11) NOT NULL,
-  `keurings_datum` datetime NOT NULL DEFAULT current_timestamp(),
+  `keurings_datum` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `uitvoerder` int(11) NOT NULL,
   `deskundige` varchar(255) NOT NULL,
   `opstelling_kraan` varchar(52) NOT NULL,
@@ -189,7 +199,7 @@ ALTER TABLE `afdelingen`
 -- AUTO_INCREMENT voor een tabel `gebruikers`
 --
 ALTER TABLE `gebruikers`
-  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `gebruiker_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT voor een tabel `voorbladen`

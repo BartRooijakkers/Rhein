@@ -13,8 +13,8 @@ switch ($_GET['action']) {
     case 'addUser':
         $input_username = $_POST['username'];
         $input_password = $_POST['password'];
-        $input_firstname = $_POST['firstname'];
-        $input_lastname = $_POST['lastname'];
+        $input_firstname = ucfirst($_POST['firstname']);
+        $input_lastname = ucfirst($_POST['lastname']);
         $input_division = $_POST['division'];
 
         if (empty($input_middlename = $_POST['middlename'])) {
