@@ -28,12 +28,14 @@ switch ($_GET['action']) {
         $usercheck = "SELECT username FROM gebruikers WHERE username = :username";
         $statement = $conn->prepare($usercheck);
         $statement->execute(['username' => $input_username]);
+        //controleert of gebruiker al bestaat
         if ($statement->rowCount() > 0) {
             header("location:addUser.php?userAdded=2");
         } else {
             $sql = "INSERT INTO gebruikers(`voor_naam`,`achter_naam`,`tussenvoegsel`,`username`,`password`,`afdeling`) VALUES(:voor_naam,:achter_naam,:tussenvoegsel,:username,:pass,:afdeling);";
             $stmt = $conn->prepare($sql);
-            $stmt->execute(['voor_naam' => $input_firstname, 'achter_naam' => $input_lastname, 'tussenvoegsel' => $input_middlename, 'username' => $input_username, 'pass' => $password, 'afdeling' => $input_division]);
+            $stmt->execute(['voor_naam' => $input_firstname, 'achter_naam' => $input_lastname, 'tussenvoegsel' => $input_middlename, 'username' => $input_username,
+             'pass' => $password, 'afdeling' => $input_division]);
             header("location:addUser.php?userAdded=1");
         }
         break;
@@ -87,7 +89,6 @@ switch ($_GET['action']) {
         echo "succes!";
         var_dump($params);
         
-        //Set values into query
         /**
          * ? Checken welk type keuring het is
          */
@@ -118,6 +119,7 @@ switch ($_GET['action']) {
                         "hulpgiek_lengte" => $hulpgiek_lengte, "hoofdgiek_giekhoek" => $hoofdgiek_giekhoek, "hulpgiek_giekhoek" => $hulpgiek_giekhoek, "hijskabel_aantal_parten" => $hijskabel_aantal_parten, "zwenkhoek" => $zwenkhoek,
                         "eigen_massa_ballast" => $eigen_massa_ballast, "toelaatbare_bedrijfslast" => $toelaatbare_bedrijfslast, "lmb_in_werking" => $lmb_in_werking, "proeflast" => $proeflast, "akkoord" => $akkoord
                     );
+                    //Uitvoeren van query met aangewezen waarden
                      $stmt->execute($params);
                     header("location:home.php?status=1");
                     }else{
@@ -146,8 +148,8 @@ switch ($_GET['action']) {
                     /* Als query gelukt is redirect naar mijnincidenten */
                     $params = array("opdracht_nummer" => $last_id,"kabel_ID" => $kabel_ID,"draadbreuk_6D" => $draadbreuk_6D,"draadbreuk_30D" => $draadbreuk_30D,"beschadiging_buitenzijde" => $beschadiging_buitenzijde,"beschadiging_roest_corrosie" => $beschadiging_roest_corrosie,
                     "verminderde_kabeldiameter" => $verminderde_kabeldiameter,"positie_meetpunten" => $positie_meetpunten,"beschadiging_totaal" => $beschadiging_totaal,"type_beschadiging_roest" => $type_beschadiging_roest);
+                    //Uitvoeren van query met aangewezen waarden
                     $stmt->execute($params);
-                    print_r($stmt->errorInfo());
                     header("location:home.php?status=1");
                 } else {
                     print_r($params);
@@ -160,7 +162,6 @@ switch ($_GET['action']) {
         }
         break;
     default:
-        speak($_SESSION['naam']);
         logOut();
         break;
 }

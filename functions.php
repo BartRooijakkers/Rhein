@@ -7,7 +7,7 @@
    $dsn= 'mysql:host='.$hostName.';dbname='.$database;
 
   
-
+// Connectie
    try{
     $conn = new PDO($dsn, $username, $pass);
     $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
@@ -21,10 +21,6 @@
 session_start();
 if (!isset($_SESSION['userID'])) {
     header('Location:index.php');
-}
-
-function speak($name){
- echo "Welkom <b>". $name . "</b>!<br>";
 }
 
 function logOut(){
@@ -45,17 +41,21 @@ function logIn(){
     $stmt = $conn->prepare($sql);
 
     $stmt->execute(['username' => $input_username]);
-
+//Controleren of gebruiker bestaat
     if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch()) {
+            //Verifieren van wachtwoord
             if (password_verify($input_password, $row->password) && $row->account_status == 1) {
+                //Wachtwoord uit opgehaalde data halen
                 unset($row->password);
                 session_start();
+                //Sessie data opzetten
                 $_SESSION['userID'] = $row->gebruiker_ID;
                 $_SESSION['username'] = $input_username;
                 $_SESSION['naam'] = $row->voor_naam;
                 $_SESSION['achternaam'] = $row->achter_naam;
                 $_SESSION['afdeling'] = $row->afdeling;
+                //Update last_login time
                 $update_last_login = $conn->prepare("UPDATE gebruikers SET last_login = CURRENT_TIMESTAMP WHERE gebruiker_ID = :userID");
                 $update_last_login->execute(['userID'=>$row->gebruiker_ID]);
             } else {
@@ -67,23 +67,6 @@ function logIn(){
     }else{
         header('Location:index.php?status=3');
     }
-
-    // $sql = "SELECT gebruikers.* FROM `gebruikers` WHERE `username` = :username AND `password` = :pass";
-    // $stmt = $conn->prepare($sql);
-    // $stmt->execute(['username' =>$username, 'pass' =>$password]);
-    // if($stmt->rowCount() > 0){
-    //     while($row = $stmt->fetch()){
-    //         session_start();
-    //         $_SESSION['userID'] = $row->gebruiker_ID;
-    //         $_SESSION['user'] = $username;
-    //         $_SESSION['naam'] = $row->voor_naam;
-    //         $_SESSION['achternaam'] = $row->achter_naam;
-    //         $_SESSION['afdeling'] = $row->afdeling;
-    //     }
-    //         header('Location:home.php');
-    // } else {
-    //     header('Location:index.php?status=2');
-    // }
 }
 
 function insertUser($username,$voornaam,$achternaam,$tussenvoegsel){

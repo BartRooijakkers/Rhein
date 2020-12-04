@@ -21,14 +21,14 @@ switch (@$_GET['request_status']) {
         echo "<script>alert('Gebruiker verwijderd');</script>";
         break;
     default:
-        # code...
+        #
         break;
 }
-//Retrieve all active users from DB
+//Alle actieve gebruikers oproepen
 $sql_active = $conn->query("SELECT gebruikers.voor_naam,gebruikers.achter_naam,gebruikers.tussenvoegsel,gebruikers.username,afdelingen.afdeling_naam, 
 COUNT(voorbladen.opdracht_nummer)'aantal_keuringen', DATE_FORMAT(gebruikers.last_login,'%d-%m-%y%y  %H:%i') 'login_time' FROM gebruikers INNER JOIN afdelingen ON gebruikers.afdeling = afdelingen.afdeling_ID 
 LEFT JOIN voorbladen ON voorbladen.uitvoerder = gebruikers.gebruiker_ID WHERE gebruikers.account_status = 1 GROUP BY gebruikers.gebruiker_ID ORDER BY achter_naam ASC");
-// Retrieve all user requests from DB
+// Gebruikers verzoeken oproepen
 $sql_requests = $conn->query("SELECT gebruikers.voor_naam,gebruikers.achter_naam,gebruikers.tussenvoegsel,gebruikers.username,gebruikers.gebruiker_ID,afdelingen.afdeling_naam FROM gebruikers 
 INNER JOIN afdelingen ON gebruikers.afdeling = afdelingen.afdeling_ID WHERE gebruikers.account_status = 0 GROUP BY gebruikers.gebruiker_ID ORDER BY achter_naam ASC")
 ?>
@@ -81,7 +81,8 @@ INNER JOIN afdelingen ON gebruikers.afdeling = afdelingen.afdeling_ID WHERE gebr
                     if($row->login_time ==null){
                         $row->login_time = "Nooit";
                     }
-                    echo "<tr><td>{$row->voor_naam}</td><td>{$row->tussenvoegsel}</td><td>{$row->achter_naam}</td><td>{$row->username}</td><td>{$row->afdeling_naam}</td><td>{$row->aantal_keuringen}</td><td>{$row->login_time}</td></tr>";
+                    echo "<tr><td>{$row->voor_naam}</td><td>{$row->tussenvoegsel}</td><td>{$row->achter_naam}</td><td>{$row->username}</td>
+                    <td>{$row->afdeling_naam}</td><td>{$row->aantal_keuringen}</td><td>{$row->login_time}</td></tr>";
                 }
                 ?>
             </table>

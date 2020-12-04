@@ -182,18 +182,6 @@ ul li{
     background-repeat: no-repeat;
     background-size: 100%;
 }
-#gebruikerToevoegen{
-    background: url(../images/gebruikerToevoegen.png),
-    #F5A913;
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-#gebruikerToevoegen:hover {
-    background: url(../images/gebruikerToevoegenActief.png),
-    #F0C760;
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
 /* Content sizing & verdeling */
 .contentBox{
     width:100%;

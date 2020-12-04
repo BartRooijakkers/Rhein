@@ -1,6 +1,7 @@
 <?php
 if (@include 'functions.php') {
     $id = $_GET['id'];
+    //Bepaalt welke gegevens de query moet oproepen
     switch ($_GET['type']) {
         case 1:
             $type = "Hijstest";
@@ -83,6 +84,7 @@ while ($row = $stmt->fetch()) {
     box-shadow: inset 0 0 0 1000px #fff2ccd3;">
                 <h1 style="color:green; padding: 1vw 0 0 0.5vw;">General info</h1>
             <div class="generalInfo">
+            <!-- Uitlezen van opgeroepen gegevens -->
                 <span class="header">Opdracht Nummer:</span>
                 <span><?php echo $data->opdracht_nummer ?></span>
                 <hr>
@@ -165,6 +167,7 @@ while ($row = $stmt->fetch()) {
                 <span><?php echo $data->afleg_redenen ?></span>
             </div>
         </div>
+        <!-- Roept nodige includefile op -->
         <?php include($includeFile);?>
     </div>
 </body>
